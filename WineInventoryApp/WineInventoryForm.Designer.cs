@@ -30,8 +30,9 @@
         {
             this.contentPanel = new System.Windows.Forms.Panel();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
-            this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.settingsPage = new WineInventoryApp.Controls.Pages.SettingsPage();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,6 +54,13 @@
             this.menuStrip.TabIndex = 1;
             this.menuStrip.Text = "menuStrip1";
             // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F)));
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "&File";
+            // 
             // statusStrip
             // 
             this.statusStrip.Location = new System.Drawing.Point(0, 428);
@@ -61,18 +69,20 @@
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "statusStrip1";
             // 
-            // fileToolStripMenuItem
+            // loginPage1
             // 
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F)));
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "&File";
+            this.settingsPage.Location = new System.Drawing.Point(0, 0);
+            this.settingsPage.MinimumSize = new System.Drawing.Size(800, 426);
+            this.settingsPage.Name = "loginPage1";
+            this.settingsPage.Size = new System.Drawing.Size(800, 426);
+            this.settingsPage.TabIndex = 3;
             // 
             // WineInventoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.settingsPage);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.contentPanel);
             this.Controls.Add(this.menuStrip);
@@ -91,6 +101,7 @@
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip;
+        private Controls.Pages.SettingsPage settingsPage;
     }
 }
 
