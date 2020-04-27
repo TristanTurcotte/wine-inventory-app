@@ -67,6 +67,18 @@
     <Compile Include="Controls\Pages\LoginPage.Designer.cs">
       <DependentUpon>LoginPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Pages\SettingsPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Pages\SettingsPage.Designer.cs">
+      <DependentUpon>SettingsPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Pages\InventoryPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Pages\InventoryPage.Designer.cs">
+      <DependentUpon>InventoryPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Data\AppDatabase.cs" />
     <Compile Include="Data\InventoryChange.cs" />
     <Compile Include="Data\InventoryDataSet.cs">
@@ -91,6 +103,12 @@
     <EmbeddedResource Include="Controls\Pages\LoginPage.resx">
       <DependentUpon>LoginPage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Pages\SettingsPage.resx">
+      <DependentUpon>SettingsPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Pages\InventoryPage.resx">
+      <DependentUpon>InventoryPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -99,6 +117,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="WineInventoryForm.resx">
       <DependentUpon>WineInventoryForm.cs</DependentUpon>
@@ -126,6 +145,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Globe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Moon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\VertLine.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Line.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RestaurantName.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RestuarantLogo.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
