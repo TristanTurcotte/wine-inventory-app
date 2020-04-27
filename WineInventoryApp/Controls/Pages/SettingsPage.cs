@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WineInventoryApp.Controls.Pages
 {
-    public partial class LoginPage : UserControl
+    public partial class SettingsPage : UserControl
     {
-        public LoginPage()
+        public SettingsPage()
         {
             InitializeComponent();
         }
