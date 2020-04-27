@@ -32,7 +32,6 @@
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
-            this.loginPage1 = new WineInventoryApp.Controls.Pages.LoginPage();
             this.contentPanel.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -71,15 +70,6 @@
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "statusStrip1";
             // 
-            // loginPage1
-            // 
-            this.loginPage1.BackColor = System.Drawing.SystemColors.Window;
-            this.loginPage1.Location = new System.Drawing.Point(0, 0);
-            this.loginPage1.MinimumSize = new System.Drawing.Size(800, 426);
-            this.loginPage1.Name = "loginPage1";
-            this.loginPage1.Size = new System.Drawing.Size(800, 426);
-            this.loginPage1.TabIndex = 0;
-            // 
             // WineInventoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -104,7 +94,6 @@
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip;
-        private Controls.Pages.LoginPage loginPage1;
     }
 }
 
