@@ -52,11 +52,11 @@
     <Compile Include="Controls\Pages\LoginPage.Designer.cs">
       <DependentUpon>LoginPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Inventory.cs">
+    <Compile Include="Controls\Pages\InventoryPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Inventory.Designer.cs">
-      <DependentUpon>Inventory.cs</DependentUpon>
+    <Compile Include="Controls\Pages\InventoryPage.Designer.cs">
+      <DependentUpon>InventoryPage.cs</DependentUpon>
     </Compile>
     <Compile Include="WineInventoryForm.cs">
       <SubType>Form</SubType>
@@ -69,8 +69,8 @@
     <EmbeddedResource Include="Controls\Pages\LoginPage.resx">
       <DependentUpon>LoginPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Inventory.resx">
-      <DependentUpon>Inventory.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\Pages\InventoryPage.resx">
+      <DependentUpon>InventoryPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
