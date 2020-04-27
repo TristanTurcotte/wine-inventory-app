@@ -67,6 +67,19 @@
     <Compile Include="Controls\Pages\LoginPage.Designer.cs">
       <DependentUpon>LoginPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Data\AppDatabase.cs" />
+    <Compile Include="Data\InventoryChange.cs" />
+    <Compile Include="Data\InventoryDataSet.cs">
+      <DependentUpon>InventoryDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Data\InventoryDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InventoryDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Data\InventoryItem.cs" />
+    <Compile Include="Data\User.cs" />
+    <Compile Include="Data\Wine.cs" />
     <Compile Include="WineInventoryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +103,17 @@
     <EmbeddedResource Include="WineInventoryForm.resx">
       <DependentUpon>WineInventoryForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Data\InventoryDataSet.xsc">
+      <DependentUpon>InventoryDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Data\InventoryDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>InventoryDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Data\InventoryDataSet.xss">
+      <DependentUpon>InventoryDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
