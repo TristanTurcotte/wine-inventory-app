@@ -139,5 +139,46 @@ namespace WineInventoryApp.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AuthenticationIcon {
+            get {
+                object obj = ResourceManager.GetObject("AuthenticationIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap CreateAccIcon {
+            get {
+                object obj = ResourceManager.GetObject("CreateAccIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap DeleteAccIcon {
+            get {
+                object obj = ResourceManager.GetObject("DeleteAccIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+       
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SecurityIcon {
+            get {
+                object obj = ResourceManager.GetObject("SecurityIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

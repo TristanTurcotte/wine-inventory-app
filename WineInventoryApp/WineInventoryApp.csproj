@@ -46,11 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\Pages\LoginPage.cs">
+    <Compile Include="Controls\Pages\AccountMgmtPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\Pages\LoginPage.Designer.cs">
-      <DependentUpon>LoginPage.cs</DependentUpon>
+    <Compile Include="Controls\Pages\AccountMgmtPage.Designer.cs">
+      <DependentUpon>AccountMgmtPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\Pages\SettingsPage.cs">
       <SubType>UserControl</SubType>
@@ -72,8 +72,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Controls\Pages\LoginPage.resx">
-      <DependentUpon>LoginPage.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\Pages\AccountMgmtPage.resx">
+      <DependentUpon>AccountMgmtPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Pages\SettingsPage.resx">
       <DependentUpon>SettingsPage.cs</DependentUpon>
@@ -130,6 +130,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\RestuarantLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AuthenticationIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CreateAccIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DeleteAccIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SecurityIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

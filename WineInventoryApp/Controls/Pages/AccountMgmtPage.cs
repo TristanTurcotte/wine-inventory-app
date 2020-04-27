@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace WineInventoryApp.Controls.Pages
 {
-    public partial class LoginPage : UserControl
+    public partial class AccountMgmtPage : UserControl
     {
-        public LoginPage()
+        public AccountMgmtPage()
         {
             InitializeComponent();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
