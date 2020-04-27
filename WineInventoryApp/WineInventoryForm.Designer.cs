@@ -32,16 +32,12 @@
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
-            this.accountMgmtPage1 = new WineInventoryApp.Controls.Pages.AccountMgmtPage();
-            this.accountMgmtPage = new WineInventoryApp.Controls.Pages.AccountMgmtPage();
             this.contentPanel.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // contentPanel
             // 
-            this.contentPanel.Controls.Add(this.accountMgmtPage);
-            this.contentPanel.Controls.Add(this.accountMgmtPage1);
             this.contentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.contentPanel.Location = new System.Drawing.Point(0, 24);
             this.contentPanel.Name = "contentPanel";
@@ -73,23 +69,6 @@
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "statusStrip1";
             // 
-            // accountMgmtPage1
-            // 
-            this.accountMgmtPage1.Location = new System.Drawing.Point(0, 0);
-            this.accountMgmtPage1.MinimumSize = new System.Drawing.Size(800, 426);
-            this.accountMgmtPage1.Name = "accountMgmtPage1";
-            this.accountMgmtPage1.Size = new System.Drawing.Size(800, 426);
-            this.accountMgmtPage1.TabIndex = 0;
-            // 
-            // accountMgmtPage
-            // 
-            this.accountMgmtPage.BackColor = System.Drawing.SystemColors.Window;
-            this.accountMgmtPage.Location = new System.Drawing.Point(0, 0);
-            this.accountMgmtPage.MinimumSize = new System.Drawing.Size(800, 426);
-            this.accountMgmtPage.Name = "accountMgmtPage";
-            this.accountMgmtPage.Size = new System.Drawing.Size(800, 426);
-            this.accountMgmtPage.TabIndex = 1;
-            // 
             // WineInventoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -114,8 +93,6 @@
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip;
-        private Controls.Pages.AccountMgmtPage accountMgmtPage1;
-        private Controls.Pages.AccountMgmtPage accountMgmtPage;
     }
 }
 
