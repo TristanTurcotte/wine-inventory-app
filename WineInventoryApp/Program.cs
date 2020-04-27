@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WineInventoryApp.Controls.Pages;
 
 namespace WineInventoryApp
 {
@@ -16,7 +17,7 @@ namespace WineInventoryApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new WineInventoryForm());
+            Application.Run(new OrdersPage());
         }
     }
 }
