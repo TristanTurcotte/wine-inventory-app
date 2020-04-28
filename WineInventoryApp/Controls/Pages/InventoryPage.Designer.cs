@@ -1,6 +1,6 @@
 ﻿namespace WineInventoryApp.Controls.Pages
 {
-    partial class Inventory
+    partial class InventoryPage
     {
         /// <summary> 
         /// Required designer variable.
