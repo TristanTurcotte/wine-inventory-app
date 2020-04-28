@@ -31,24 +31,24 @@
             this.contentPanel = new System.Windows.Forms.Panel();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.navPanel = new System.Windows.Forms.Panel();
-            this.backNavButton = new System.Windows.Forms.Button();
-            this.forwardNavButton = new System.Windows.Forms.Button();
-            this.backForwardPanel = new System.Windows.Forms.Panel();
             this.navigationFlowLayout = new System.Windows.Forms.FlowLayoutPanel();
-            this.navInventoryButton = new System.Windows.Forms.Button();
             this.separatorLabel = new System.Windows.Forms.Label();
+            this.navInventoryButton = new System.Windows.Forms.Button();
             this.navWineListButton = new System.Windows.Forms.Button();
             this.navOrdersButton = new System.Windows.Forms.Button();
             this.navAccountsButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.navLogoutButton = new System.Windows.Forms.Button();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.backForwardPanel = new System.Windows.Forms.Panel();
+            this.backNavButton = new System.Windows.Forms.Button();
+            this.forwardNavButton = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
             this.navPanel.SuspendLayout();
-            this.backForwardPanel.SuspendLayout();
             this.navigationFlowLayout.SuspendLayout();
+            this.backForwardPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // contentPanel
@@ -78,6 +78,12 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "&File";
             // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(93, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            // 
             // statusStrip
             // 
             this.statusStrip.Location = new System.Drawing.Point(0, 428);
@@ -99,40 +105,6 @@
             this.navPanel.TabIndex = 3;
             this.navPanel.Visible = false;
             // 
-            // backNavButton
-            // 
-            this.backNavButton.Enabled = false;
-            this.backNavButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.backNavButton.Location = new System.Drawing.Point(3, 3);
-            this.backNavButton.Name = "backNavButton";
-            this.backNavButton.Size = new System.Drawing.Size(32, 32);
-            this.backNavButton.TabIndex = 0;
-            this.backNavButton.Text = "<";
-            this.backNavButton.UseVisualStyleBackColor = true;
-            this.backNavButton.Click += new System.EventHandler(this.backNavButton_Click);
-            // 
-            // forwardNavButton
-            // 
-            this.forwardNavButton.Enabled = false;
-            this.forwardNavButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.forwardNavButton.Location = new System.Drawing.Point(69, 3);
-            this.forwardNavButton.Name = "forwardNavButton";
-            this.forwardNavButton.Size = new System.Drawing.Size(32, 32);
-            this.forwardNavButton.TabIndex = 1;
-            this.forwardNavButton.Text = ">";
-            this.forwardNavButton.UseVisualStyleBackColor = true;
-            this.forwardNavButton.Click += new System.EventHandler(this.forwardNavButton_Click);
-            // 
-            // backForwardPanel
-            // 
-            this.backForwardPanel.Controls.Add(this.backNavButton);
-            this.backForwardPanel.Controls.Add(this.forwardNavButton);
-            this.backForwardPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.backForwardPanel.Location = new System.Drawing.Point(0, 0);
-            this.backForwardPanel.Name = "backForwardPanel";
-            this.backForwardPanel.Size = new System.Drawing.Size(104, 39);
-            this.backForwardPanel.TabIndex = 2;
-            // 
             // navigationFlowLayout
             // 
             this.navigationFlowLayout.Controls.Add(this.separatorLabel);
@@ -148,17 +120,6 @@
             this.navigationFlowLayout.Size = new System.Drawing.Size(104, 365);
             this.navigationFlowLayout.TabIndex = 3;
             // 
-            // navInventoryButton
-            // 
-            this.navInventoryButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.navInventoryButton.Location = new System.Drawing.Point(3, 5);
-            this.navInventoryButton.Name = "navInventoryButton";
-            this.navInventoryButton.Size = new System.Drawing.Size(98, 29);
-            this.navInventoryButton.TabIndex = 0;
-            this.navInventoryButton.Text = "Inventory";
-            this.navInventoryButton.UseVisualStyleBackColor = true;
-            this.navInventoryButton.Click += new System.EventHandler(this.navInventoryButton_Click);
-            // 
             // separatorLabel
             // 
             this.separatorLabel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -167,9 +128,20 @@
             this.separatorLabel.Size = new System.Drawing.Size(98, 2);
             this.separatorLabel.TabIndex = 3;
             // 
+            // navInventoryButton
+            // 
+            this.navInventoryButton.Font = new System.Drawing.Font("Microsoft Tai Le", 10F);
+            this.navInventoryButton.Location = new System.Drawing.Point(3, 5);
+            this.navInventoryButton.Name = "navInventoryButton";
+            this.navInventoryButton.Size = new System.Drawing.Size(98, 29);
+            this.navInventoryButton.TabIndex = 0;
+            this.navInventoryButton.Text = "Inventory";
+            this.navInventoryButton.UseVisualStyleBackColor = true;
+            this.navInventoryButton.Click += new System.EventHandler(this.navInventoryButton_Click);
+            // 
             // navWineListButton
             // 
-            this.navWineListButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.navWineListButton.Font = new System.Drawing.Font("Microsoft Tai Le", 10F);
             this.navWineListButton.Location = new System.Drawing.Point(3, 40);
             this.navWineListButton.Name = "navWineListButton";
             this.navWineListButton.Size = new System.Drawing.Size(98, 29);
@@ -179,7 +151,7 @@
             // 
             // navOrdersButton
             // 
-            this.navOrdersButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.navOrdersButton.Font = new System.Drawing.Font("Microsoft Tai Le", 10F);
             this.navOrdersButton.Location = new System.Drawing.Point(3, 75);
             this.navOrdersButton.Name = "navOrdersButton";
             this.navOrdersButton.Size = new System.Drawing.Size(98, 29);
@@ -190,7 +162,7 @@
             // 
             // navAccountsButton
             // 
-            this.navAccountsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.navAccountsButton.Font = new System.Drawing.Font("Microsoft Tai Le", 10F);
             this.navAccountsButton.Location = new System.Drawing.Point(3, 110);
             this.navAccountsButton.Name = "navAccountsButton";
             this.navAccountsButton.Size = new System.Drawing.Size(98, 29);
@@ -209,7 +181,7 @@
             // 
             // navLogoutButton
             // 
-            this.navLogoutButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.navLogoutButton.Font = new System.Drawing.Font("Microsoft Tai Le", 10F);
             this.navLogoutButton.Location = new System.Drawing.Point(3, 147);
             this.navLogoutButton.Name = "navLogoutButton";
             this.navLogoutButton.Size = new System.Drawing.Size(98, 29);
@@ -218,11 +190,39 @@
             this.navLogoutButton.UseVisualStyleBackColor = true;
             this.navLogoutButton.Click += new System.EventHandler(this.navLogoutButton_Click);
             // 
-            // exitToolStripMenuItem
+            // backForwardPanel
             // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
+            this.backForwardPanel.Controls.Add(this.backNavButton);
+            this.backForwardPanel.Controls.Add(this.forwardNavButton);
+            this.backForwardPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.backForwardPanel.Location = new System.Drawing.Point(0, 0);
+            this.backForwardPanel.Name = "backForwardPanel";
+            this.backForwardPanel.Size = new System.Drawing.Size(104, 39);
+            this.backForwardPanel.TabIndex = 2;
+            // 
+            // backNavButton
+            // 
+            this.backNavButton.Enabled = false;
+            this.backNavButton.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.backNavButton.Location = new System.Drawing.Point(3, 3);
+            this.backNavButton.Name = "backNavButton";
+            this.backNavButton.Size = new System.Drawing.Size(32, 32);
+            this.backNavButton.TabIndex = 0;
+            this.backNavButton.Text = "<";
+            this.backNavButton.UseVisualStyleBackColor = true;
+            this.backNavButton.Click += new System.EventHandler(this.backNavButton_Click);
+            // 
+            // forwardNavButton
+            // 
+            this.forwardNavButton.Enabled = false;
+            this.forwardNavButton.Font = new System.Drawing.Font("Microsoft Tai Le", 12F);
+            this.forwardNavButton.Location = new System.Drawing.Point(69, 3);
+            this.forwardNavButton.Name = "forwardNavButton";
+            this.forwardNavButton.Size = new System.Drawing.Size(32, 32);
+            this.forwardNavButton.TabIndex = 1;
+            this.forwardNavButton.Text = ">";
+            this.forwardNavButton.UseVisualStyleBackColor = true;
+            this.forwardNavButton.Click += new System.EventHandler(this.forwardNavButton_Click);
             // 
             // WineInventoryForm
             // 
@@ -238,8 +238,8 @@
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.navPanel.ResumeLayout(false);
-            this.backForwardPanel.ResumeLayout(false);
             this.navigationFlowLayout.ResumeLayout(false);
+            this.backForwardPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

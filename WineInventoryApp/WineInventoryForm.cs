@@ -31,7 +31,7 @@ namespace WineInventoryApp
             navigator.NavigateForward(loginPage);
         }
 
-        private void SetNavigationPanel(bool enabled)
+        public void SetNavigationPanel(bool enabled)
         {
             navPanel.Enabled = enabled;
             navPanel.Visible = enabled;
@@ -70,7 +70,7 @@ namespace WineInventoryApp
         //================================//
         private void navInventoryButton_Click(object sender, EventArgs e)
         {
-            navigator.NavigateForward(new Inventory());
+            navigator.NavigateForward(new InventoryPage());
         }
 
         private void navWineListButton_Click(object sender, EventArgs e)

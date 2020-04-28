@@ -10,6 +10,8 @@ namespace WineInventoryApp.Controller
     /// </summary>
     class Navigator
     {
+        private static Navigator navigator;
+
         private WineInventoryForm form;
         private Panel contentPanel;
         private List<UserControl> navList;
@@ -21,16 +23,29 @@ namespace WineInventoryApp.Controller
             this.contentPanel = contentPanel;
             navList = new List<UserControl>();
             navigationIndex = -1;
+
+            Navigator.navigator = this;
         }
 
-        private UserControl SwitchToPage(UserControl page)
+        public static Navigator GetNavigator()
+        {
+            return navigator;
+        }
+
+        private UserControl SwitchToPage(UserControl page, bool displayNavigation = true)
         {
             contentPanel.Controls.Clear();
             contentPanel.Controls.Add(page);
 
             form.UpdateBackForwardButtons();
+            
 
             return page;
+        }
+
+        public void SetNavigationPanelVisible(bool visible)
+        {
+            form.SetNavigationPanel(visible);
         }
 
         /// <summary>
