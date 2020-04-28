@@ -69,9 +69,11 @@
     </Compile>
     <Compile Include="Controls\Pages\LoginPage.cs">
       <SubType>UserControl</SubType>
+    <Compile Include="Controls\Pages\OrdersPage.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Controls\Pages\LoginPage.Designer.cs">
-      <DependentUpon>LoginPage.cs</DependentUpon>
+    <Compile Include="Controls\Pages\OrdersPage.Designer.cs">
+      <DependentUpon>OrdersPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\Pages\SettingsPage.cs">
       <SubType>UserControl</SubType>
@@ -111,6 +113,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Pages\LoginPage.resx">
       <DependentUpon>LoginPage.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\Pages\OrdersPage.resx">
+      <DependentUpon>OrdersPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Pages\SettingsPage.resx">
       <DependentUpon>SettingsPage.cs</DependentUpon>
