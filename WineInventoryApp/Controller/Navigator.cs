@@ -17,6 +17,11 @@ namespace WineInventoryApp.Controller
         private List<UserControl> navList;
         private int navigationIndex;
 
+        /// <summary>
+        /// Creates a navigator object to navigate through the different pages in the given form.
+        /// </summary>
+        /// <param name="form">Form that this navigator is paired with.</param>
+        /// <param name="contentPanel">The panel where the navigator will place the pages.</param>
         public Navigator(WineInventoryForm form, Panel contentPanel)
         {
             this.form = form;
@@ -27,11 +32,21 @@ namespace WineInventoryApp.Controller
             Navigator.navigator = this;
         }
 
+        /// <summary>
+        /// Returns the navigator for this application.
+        /// </summary>
+        /// <returns>Currently active navigator object.</returns>
         public static Navigator GetNavigator()
         {
             return navigator;
         }
 
+        /// <summary>
+        /// Switches the currently displayed page.
+        /// </summary>
+        /// <param name="page">Page UserControl to switch to.</param>
+        /// <param name="displayNavigation">To display the navigation panel or not.</param>
+        /// <returns>The page UserControl that was switched to.</returns>
         private UserControl SwitchToPage(UserControl page, bool displayNavigation = true)
         {
             contentPanel.Controls.Clear();
@@ -39,10 +54,13 @@ namespace WineInventoryApp.Controller
 
             form.UpdateBackForwardButtons();
             
-
             return page;
         }
 
+        /// <summary>
+        /// Sets if the left-hand side navigation panel is visible.
+        /// </summary>
+        /// <param name="visible">If the navigation panel is to be visible and active.</param>
         public void SetNavigationPanelVisible(bool visible)
         {
             form.SetNavigationPanel(visible);
