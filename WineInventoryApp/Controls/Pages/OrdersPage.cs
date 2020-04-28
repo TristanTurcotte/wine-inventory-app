@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace WineInventoryApp.Controls.Pages
 {
-    public partial class LoginPage : UserControl
+    public partial class OrdersPage : UserControl
     {
 // Page for login to the application. Will be the main page to be opened.
-        public LoginPage()
+        public OrdersPage()
         {
             InitializeComponent();
         }

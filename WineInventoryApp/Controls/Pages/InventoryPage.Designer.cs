@@ -1,4 +1,4 @@
-﻿namespace WineInventoryApp
+﻿namespace WineInventoryApp.Controls.Pages
 {
     partial class Inventory
     {
