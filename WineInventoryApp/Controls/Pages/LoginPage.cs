@@ -12,6 +12,7 @@ namespace WineInventoryApp.Controls.Pages
 {
     public partial class LoginPage : UserControl
     {
+// Page for login to the application. Will be the main page to be opened.
         public LoginPage()
         {
             InitializeComponent();
