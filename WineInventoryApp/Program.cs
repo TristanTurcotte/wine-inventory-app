@@ -17,7 +17,7 @@ namespace WineInventoryApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new OrdersPage());
+            Application.Run(new WineInventoryForm());
         }
     }
 }

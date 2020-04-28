@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,8 +10,9 @@ using System.Windows.Forms;
 
 namespace WineInventoryApp.Controls.Pages
 {
-    public partial class OrdersPage : Form
+    public partial class OrdersPage : UserControl
     {
+// Page for login to the application. Will be the main page to be opened.
         public OrdersPage()
         {
             InitializeComponent();
