@@ -14,6 +14,7 @@ namespace WineInventoryApp
 {
     public partial class WineInventoryForm : Form
     {
+        private bool loggedIn;
         private Navigator navigator;
 
         public WineInventoryForm()
@@ -21,12 +22,19 @@ namespace WineInventoryApp
             InitializeComponent();
 
             // Prepare the navigator
-            navigator = new Navigator(contentPanel);
+            navigator = new Navigator(this, contentPanel);
 
             // Prepare the initial login page
+            loggedIn = false;
             LoginPage loginPage = new LoginPage();
 
             navigator.NavigateForward(loginPage);
+        }
+
+        private void SetNavigationPanel(bool enabled)
+        {
+            navPanel.Enabled = enabled;
+            navPanel.Visible = enabled;
         }
 
         //=================================//
@@ -34,12 +42,27 @@ namespace WineInventoryApp
         //=================================//
         private void backNavButton_Click(object sender, EventArgs e)
         {
-
+            if (navigator.CanNavigateBack())
+            {
+                navigator.NavigateBack();
+            }
         }
 
         private void forwardNavButton_Click(object sender, EventArgs e)
         {
+            if (navigator.CanNavigateForward())
+            {
+                navigator.NavigateForward();
+            }
+        }
 
+        /// <summary>
+        /// Sets whether the forward and back navigation is enabled or not. Called by Navigator class.
+        /// </summary>
+        public void UpdateBackForwardButtons()
+        {
+            backNavButton.Enabled = navigator.CanNavigateBack();
+            forwardNavButton.Enabled = navigator.CanNavigateForward();
         }
 
         //================================//
@@ -47,27 +70,31 @@ namespace WineInventoryApp
         //================================//
         private void navInventoryButton_Click(object sender, EventArgs e)
         {
-
+            navigator.NavigateForward(new Inventory());
         }
 
         private void navWineListButton_Click(object sender, EventArgs e)
         {
-
+            // Non-existant
         }
 
         private void navOrdersButton_Click(object sender, EventArgs e)
         {
-
+            navigator.NavigateForward(new OrdersPage());
         }
 
         private void navAccountsButton_Click(object sender, EventArgs e)
         {
-
+            navigator.NavigateForward(new AccountMgmtPage());
         }
 
         private void navLogoutButton_Click(object sender, EventArgs e)
         {
+            loggedIn = false;
+            navigator.NavigateForward(new LoginPage());
+            navigator.PurgeNavigationHistory();
 
+            SetNavigationPanel(false);
         }
     }
 }
