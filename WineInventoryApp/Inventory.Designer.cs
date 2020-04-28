@@ -62,7 +62,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::WineInventoryApp.Properties.Resources.minus;
-            this.pictureBox2.Location = new System.Drawing.Point(558, 76);
+            this.pictureBox2.Location = new System.Drawing.Point(637, 76);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(34, 33);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -72,7 +72,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::WineInventoryApp.Properties.Resources.plus;
-            this.pictureBox3.Location = new System.Drawing.Point(518, 76);
+            this.pictureBox3.Location = new System.Drawing.Point(588, 76);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(34, 33);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -82,7 +82,7 @@
             // listView1
             // 
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(103, 115);
+            this.listView1.Location = new System.Drawing.Point(120, 115);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(551, 308);
             this.listView1.TabIndex = 7;
@@ -90,7 +90,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(103, 89);
+            this.textBox1.Location = new System.Drawing.Point(120, 89);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(196, 20);
             this.textBox1.TabIndex = 8;
