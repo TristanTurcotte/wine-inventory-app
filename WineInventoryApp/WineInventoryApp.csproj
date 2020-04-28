@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -61,11 +61,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\Pages\LoginPage.cs">
+    <Compile Include="Controls\Pages\AccountMgmtPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\Pages\LoginPage.Designer.cs">
-      <DependentUpon>LoginPage.cs</DependentUpon>
+    <Compile Include="Controls\Pages\AccountMgmtPage.Designer.cs">
+      <DependentUpon>AccountMgmtPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\Pages\SettingsPage.cs">
       <SubType>UserControl</SubType>
@@ -100,8 +100,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Controls\Pages\LoginPage.resx">
-      <DependentUpon>LoginPage.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\Pages\AccountMgmtPage.resx">
+      <DependentUpon>AccountMgmtPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Pages\SettingsPage.resx">
       <DependentUpon>SettingsPage.cs</DependentUpon>
@@ -190,6 +190,16 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>InventoryDatabase.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\AuthenticationIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CreateAccIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DeleteAccIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SecurityIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

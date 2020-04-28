@@ -142,4 +142,16 @@
   <data name="VertLine" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\VertLine.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="AuthenticationIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AuthenticationIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CreateAccIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CreateAccIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DeleteAccIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DeleteAccIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SecurityIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SecurityIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
