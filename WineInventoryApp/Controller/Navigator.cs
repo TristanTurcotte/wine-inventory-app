@@ -1,0 +1,146 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
+
+namespace WineInventoryApp.Controller
+{
+    /// <summary>
+    /// A singleton to keep track of navigation through the app. Keeps track of every page that was visited
+    /// as well as the order they were visited. Facilitates navigating forward and back between pages.
+    /// </summary>
+    class Navigator
+    {
+        private static Navigator navigator;
+
+        private Panel contentPanel;
+        private List<UserControl> navList;
+        private int navigationIndex;
+
+        public Navigator(Panel contentPanel)
+        {
+            this.contentPanel = contentPanel;
+            navList = new List<UserControl>();
+            navigationIndex = -1;
+        }
+
+        private UserControl SwitchToPage(UserControl page)
+        {
+            contentPanel.Controls.Clear();
+            contentPanel.Controls.Add(page);
+
+            return page;
+        }
+
+        /// <summary>
+        /// Go back one page from the current page. If the navigation has not been given a page before,
+        /// throws an exception. If currently on the first page of the list, returns the page back.
+        /// Otherwise it will return the page before the currently opened page.
+        /// </summary>
+        /// <returns>A UserControl which is to be added as an element to the main form.</returns>
+        public UserControl NavigateBack()
+        {
+            if (navigationIndex < 0)
+            {
+                throw new ArgumentOutOfRangeException($"Cannot navigate back when currently on page {navigationIndex}.");
+            }
+            else if (navigationIndex == 0)
+            {
+                return SwitchToPage(navList[0]);
+            }
+            else
+            {
+                return SwitchToPage(navList[--navigationIndex]);
+            }
+        }
+
+        /// <summary>
+        /// Go forward one page from the current page, or go to a new page if a UserControl was passed.
+        /// </summary>
+        /// <param name="page">Optional. If given, the current page will navigate to the given page.</param>
+        /// <returns>A UserControl which is to be added as an element to the main form.</returns>
+        public UserControl NavigateForward(UserControl page = null)
+        {
+            // Going to a page that was already visited
+            if (page == null)
+            {
+                if (navigationIndex < navList.Count - 1) // Can still navigate forward
+                {
+                    return SwitchToPage(navList[++navigationIndex]);
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException($"Cannot navigate forward to a non-existant page. navList.Count={navList.Count}, navIndex={navigationIndex}");
+                }
+            }
+            else // Going to a new page
+            {
+                if (navigationIndex == navList.Count - 1) // Currently at the most recent page
+                {
+                    navList.Add(page);
+                    navigationIndex++;
+                }
+                else // User navigated back previously and is heading to a new page
+                {
+                    navList.RemoveRange(++navigationIndex, navList.Count - navigationIndex);
+                    navList.Add(page);
+                }
+
+                return SwitchToPage(page);
+            }
+        }
+
+        /// <summary>
+        /// Gets the index of the currently opened page.
+        /// </summary>
+        /// <returns>Currently opened page index of the pages being tracked.</returns>
+        public int GetIndex()
+        {
+            return navigationIndex;
+        }
+
+        /// <summary>
+        /// Gets the count of the number of pages being tracked.
+        /// </summary>
+        /// <returns>Total pages being tracked.</returns>
+        public int GetCount()
+        {
+            return navList.Count;
+        }
+
+        /// <summary>
+        /// Removes all tracked page information and resets the navigation to only include the
+        /// currently opened page.
+        /// </summary>
+        public void PurgeNavigationHistory()
+        {
+            if (navList.Count < 1)
+            {
+                return;
+            }
+
+            UserControl currentPage = navList[navigationIndex];
+
+            navList.Clear();
+            navList.Add(currentPage);
+            navigationIndex = 0;
+        }
+
+        /// <summary>
+        /// Determines if backwards navigation is currently possible from the current index.
+        /// </summary>
+        /// <returns>True, if and only if backwards navigation is valid, otherwise false.</returns>
+        public bool CanNavigateBack()
+        {
+            return navigationIndex > 0;
+        }
+
+        /// <summary>
+        /// Determines if forward navigation is currently possible from the current index without adding a new page.
+        /// </summary>
+        /// <returns>True, if and only if forwards navigation is valid without creating a new page, otherwise false.</returns>
+        public bool CanNavigateForward()
+        {
+            return navigationIndex < navList.Count - 1;
+        }
+    }
+}

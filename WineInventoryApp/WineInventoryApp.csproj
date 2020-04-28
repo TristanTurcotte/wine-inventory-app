@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\Navigator.cs" />
     <Compile Include="Controls\Pages\AccountMgmtPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
