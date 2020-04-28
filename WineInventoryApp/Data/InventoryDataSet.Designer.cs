@@ -3813,15 +3813,17 @@ SELECT WineId, WineName, Origin, Price, Year, Volume, Type, Image FROM Wine WHER
             this._commandCollection[6] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[6].Connection = this.Connection;
             this._commandCollection[6].CommandText = "SELECT WineId, WineName, Origin, Price, Year, Volume, Type, Image FROM dbo.Wine W" +
-                "HERE LOWER(WineName) = LOWER(@wineName)";
+                "HERE WineId = @wineId";
             this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@wineName", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@wineId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "WineId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[7] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[7].Connection = this.Connection;
             this._commandCollection[7].CommandText = "SELECT WineId, WineName, Origin, Price, Year, Volume, Type, Image FROM dbo.Wine W" +
-                "HERE WineId = @wineId";
+                "HERE LOWER(WineName) = LOWER(@wineName) AND Year = @year AND Volume = @volume";
             this._commandCollection[7].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@wineId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "WineId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@wineName", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@year", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Year", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@volume", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Volume", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[8] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[8].Connection = this.Connection;
             this._commandCollection[8].CommandText = @"UPDATE [dbo].[Wine] SET [WineName] = @wineName, [Origin] = @origin, [Price] = @price, [Year] = @year, [Volume] = @volume, [Type] = @type, [Image] = @image WHERE [WineId] = @wineId;
@@ -4009,14 +4011,9 @@ SELECT WineId, WineName, Origin, Price, Year, Volume, Type, Image FROM Wine WHER
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual InventoryDataSet.WineDataTable GetWineByExactName(string wineName) {
+        public virtual InventoryDataSet.WineDataTable GetWineById(int wineId) {
             this.Adapter.SelectCommand = this.CommandCollection[6];
-            if ((wineName == null)) {
-                throw new global::System.ArgumentNullException("wineName");
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(wineName));
-            }
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(wineId));
             InventoryDataSet.WineDataTable dataTable = new InventoryDataSet.WineDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -4026,9 +4023,26 @@ SELECT WineId, WineName, Origin, Price, Year, Volume, Type, Image FROM Wine WHER
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual InventoryDataSet.WineDataTable GetWineById(int wineId) {
+        public virtual InventoryDataSet.WineDataTable GetWineByNameYearVolume(string wineName, global::System.Nullable<int> year, global::System.Nullable<int> volume) {
             this.Adapter.SelectCommand = this.CommandCollection[7];
-            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(wineId));
+            if ((wineName == null)) {
+                throw new global::System.ArgumentNullException("wineName");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(wineName));
+            }
+            if ((year.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((int)(year.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((volume.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((int)(volume.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
             InventoryDataSet.WineDataTable dataTable = new InventoryDataSet.WineDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
