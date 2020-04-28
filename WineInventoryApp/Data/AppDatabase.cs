@@ -7,9 +7,9 @@ namespace WineInventoryApp.Data
 {
     static class AppDatabase
     {
-        private static readonly int HASH_BYTE_LEN = 32;
-        private static readonly int SALT_BYTE_LEN = 16;
-        private static readonly int USERNAME_MIN_LEN = 3;
+        public static readonly int HASH_BYTE_LEN = 32;
+        public static readonly int SALT_BYTE_LEN = 16;
+        public static readonly int USERNAME_MIN_LEN = 3;
 
         // Dataset
         private static InventoryDataSet dataSet = new InventoryDataSet();
@@ -106,6 +106,11 @@ namespace WineInventoryApp.Data
                 return user;
             }
 
+            /// <summary>
+            /// Gets the user id for the given exact match of the string username. Returns -1 if the username is not found.
+            /// </summary>
+            /// <param name="username">Username to match to the database.</param>
+            /// <returns>-1 if and only if the given username is not in the database, otherwise a positive int including 0 is returned.</returns>
             public static int GetUserIdByName(string username)
             {
                 var data = tableManager.UserTableAdapter.GetUserByExactUsername(username.Trim()).Rows;
@@ -117,6 +122,11 @@ namespace WineInventoryApp.Data
                 return ((InventoryDataSet.UserRow)data[0]).UserId;
             }
 
+            /// <summary>
+            /// Checks if the given username matches an exact username in the database.
+            /// </summary>
+            /// <param name="username">Username to match to the database.</param>
+            /// <returns>True, if and only if the given username has an exact match, otherwise false.</returns>
             public static bool ContainsUsername(string username)
             {
                 var data = tableManager.UserTableAdapter.GetUserByExactUsername(username.Trim()).Rows;
@@ -151,7 +161,7 @@ namespace WineInventoryApp.Data
                 tableManager.UserTableAdapter.UpdateLoginTime(userId, dateTime);
             }
 
-            public static void InsertUser(string username, int access, byte[] hash, byte[] salt)
+            public static int InsertUser(string username, int access, byte[] hash, byte[] salt)
             {
                 if (hash.Length != HASH_BYTE_LEN || salt.Length != SALT_BYTE_LEN)
                 {
@@ -165,7 +175,11 @@ namespace WineInventoryApp.Data
                     tableManager.UserTableAdapter.Insert(name, access, DateTime.Today, null);
                     int userId = GetUserIdByName(name);
                     tableManager.PasswordTableAdapter.InsertPassword(userId, hash, salt);
+
+                    return userId;
                 }
+
+                return -1;
             }
 
             public static void DeleteUser(int userId)
