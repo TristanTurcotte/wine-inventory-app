@@ -7,38 +7,94 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WineInventoryApp.Controller;
+using WineInventoryApp.Controls.Pages;
 
 namespace WineInventoryApp
 {
     public partial class WineInventoryForm : Form
     {
-        // The panel 'contentPanel' will be used as an anchor point for
-        // custom user controls to be dynamically placed and removed
-        // from the WineInventoryForm GUI.
-        // 
-        // Custom user control examples:
-        // Login page
-        // profile page
-        // inventory page
-        // add/edit wine page
-        // add/remove from inventory page
-        // orders page, etc.
-        //
-        // The navigation between these pages can be tracked using
-        // an ordered collection that holds the pages, if the user 
-        // goes 'back' the control at a given index in the collection
-        // would get displayed.
-        //
-        // WineInventoryForm has a menu bar, 'menuStrip' which can be
-        // given different options depending on which page is open.
-        // There is also a status bar, 'statusStrip' which can have a
-        // progress bar or label to display what is currently happening
-        // on the back-end, ex. Loading database query, saving database,
-        // etc.
+        private bool loggedIn;
+        private Navigator navigator;
 
         public WineInventoryForm()
         {
             InitializeComponent();
+
+            // Prepare the navigator
+            navigator = new Navigator(this, contentPanel);
+
+            // Prepare the initial login page
+            loggedIn = false;
+            LoginPage loginPage = new LoginPage();
+
+            navigator.NavigateForward(loginPage);
+        }
+
+        private void SetNavigationPanel(bool enabled)
+        {
+            navPanel.Enabled = enabled;
+            navPanel.Visible = enabled;
+        }
+
+        //=================================//
+        // Forward and Backward navigation //
+        //=================================//
+        private void backNavButton_Click(object sender, EventArgs e)
+        {
+            if (navigator.CanNavigateBack())
+            {
+                navigator.NavigateBack();
+            }
+        }
+
+        private void forwardNavButton_Click(object sender, EventArgs e)
+        {
+            if (navigator.CanNavigateForward())
+            {
+                navigator.NavigateForward();
+            }
+        }
+
+        /// <summary>
+        /// Sets whether the forward and back navigation is enabled or not. Called by Navigator class.
+        /// </summary>
+        public void UpdateBackForwardButtons()
+        {
+            backNavButton.Enabled = navigator.CanNavigateBack();
+            forwardNavButton.Enabled = navigator.CanNavigateForward();
+        }
+
+        //================================//
+        // Application navigation buttons //
+        //================================//
+        private void navInventoryButton_Click(object sender, EventArgs e)
+        {
+            navigator.NavigateForward(new Inventory());
+        }
+
+        private void navWineListButton_Click(object sender, EventArgs e)
+        {
+            // Non-existant
+        }
+
+        private void navOrdersButton_Click(object sender, EventArgs e)
+        {
+            navigator.NavigateForward(new OrdersPage());
+        }
+
+        private void navAccountsButton_Click(object sender, EventArgs e)
+        {
+            navigator.NavigateForward(new AccountMgmtPage());
+        }
+
+        private void navLogoutButton_Click(object sender, EventArgs e)
+        {
+            loggedIn = false;
+            navigator.NavigateForward(new LoginPage());
+            navigator.PurgeNavigationHistory();
+
+            SetNavigationPanel(false);
         }
     }
 }
