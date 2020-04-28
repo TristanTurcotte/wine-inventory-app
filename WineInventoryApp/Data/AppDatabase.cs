@@ -289,8 +289,16 @@ namespace WineInventoryApp.Data
         }
 
         // PASSWORD TABLE
+        /// <summary>
+        /// Provides methods for accessing and modifying the Password table.
+        /// </summary>
         public static class PasswordTable
         {
+            /// <summary>
+            /// Gets the password salt for the given user.
+            /// </summary>
+            /// <param name="userId">User to get salt for.</param>
+            /// <returns>16 byte long array containing the salt.</returns>
             public static byte[] GetPasswordSalt(int userId)
             {
                 var data = tableManager.PasswordTableAdapter.GetDataById(userId);
@@ -302,6 +310,13 @@ namespace WineInventoryApp.Data
                 return ((InventoryDataSet.PasswordRow)data.Rows[0]).Salt;
             }
 
+            /// <summary>
+            /// Compares the given password hash to the stored password hash for the
+            /// given user.
+            /// </summary>
+            /// <param name="userId">User to check.</param>
+            /// <param name="hash">Input hash to compare.</param>
+            /// <returns>true, if and only if the given hash matches the user's stored hash, otherwise false.</returns>
             public static bool ComparePasswordHash(int userId, byte[] hash)
             {
                 if (hash.Length != HASH_BYTE_LEN)
@@ -312,6 +327,12 @@ namespace WineInventoryApp.Data
                 return tableManager.PasswordTableAdapter.MatchPasswordHash(userId, hash) == 1;
             }
 
+            /// <summary>
+            /// Updates the given user's password hash and salt.
+            /// </summary>
+            /// <param name="userId">User to update.</param>
+            /// <param name="hash">Hash to save.</param>
+            /// <param name="salt">Salt to save.</param>
             public static void UpdatePassword(int userId, byte[] hash, byte[] salt)
             {
                 if (hash.Length != HASH_BYTE_LEN && salt.Length != SALT_BYTE_LEN)
@@ -323,35 +344,65 @@ namespace WineInventoryApp.Data
             }
         }
 
-
         // WINE TABLE
+        /// <summary>
+        /// Provides methods for accessing and modifying the Wine table.
+        /// </summary>
         public static class WineTable
         {
+            /// <summary>
+            /// When a BindingSource is attached to a DataGridView, call this method to fill it with
+            /// every wine in the database.
+            /// </summary>
             public static void QueryAllWine()
             {
                 tableManager.WineTableAdapter.Fill(dataSet.Wine);
             }
 
+            /// <summary>
+            /// When a BindingSource is attached to a DataGridView, call this method to fill it with
+            /// every wine in the database matching the given name.
+            /// </summary>
+            /// <param name="wineName">Wine name.</param>
             public static void QueryWineByName(string wineName)
             {
                 tableManager.WineTableAdapter.FillByWineName(dataSet.Wine, wineName.Trim());
             }
 
+            /// <summary>
+            /// When a BindingSource is attached to a DataGridView, call this method to fill it with
+            /// every wine in the database matching the given country of origin.
+            /// </summary>
+            /// <param name="origin">Country of origin.</param>
             public static void QueryWineByOrigin(string origin)
             {
                 tableManager.WineTableAdapter.FillByOrigin(dataSet.Wine, origin.Trim());
             }
 
+            /// <summary>
+            /// When a BindingSource is attached to a DataGridView, call this method to fill it with
+            /// every wine in the database matching the given type of wine.
+            /// </summary>
+            /// <param name="type">Type of wine.</param>
             public static void QueryWineByType(string type)
             {
                 tableManager.WineTableAdapter.FillByType(dataSet.Wine, type.Trim());
             }
 
+            /// <summary>
+            /// When a BindingSource is attached to a DataGridView, call this method to fill it with
+            /// every wine in the database matching the given vintage year exactly.
+            /// </summary>
+            /// <params>Vintage year of the wine.</params>
             public static void QueryWineByYear(int year)
             {
                 tableManager.WineTableAdapter.FillByYear(dataSet.Wine, year);
             }
 
+            /// <summary>
+            /// Get a List of every wine in the wine table.
+            /// </summary>
+            /// <returns>List of type Wine.</returns>
             public static List<Wine> GetAllWine()
             {
                 List<Wine> wine = new List<Wine>();
@@ -364,6 +415,11 @@ namespace WineInventoryApp.Data
                 return wine;
             }
 
+            /// <summary>
+            /// Get a wine object matching the given wine id from the Wine table.
+            /// </summary>
+            /// <param name="wineId">Wine to search for.</param>
+            /// <returns>Wine object representing an entry in the database.</returns>
             public static Wine GetWineById(int wineId)
             {
                 var data = tableManager.WineTableAdapter.GetWineById(wineId).Rows;
@@ -377,6 +433,11 @@ namespace WineInventoryApp.Data
                 return wine;
             }
 
+            /// <summary>
+            /// Get a list of wine objects that match the given name.
+            /// </summary>
+            /// <param name="wineName">Wine name to search for.</param>
+            /// <returns>List of Wine objects matching the given name.</returns>
             public static List<Wine> GetWineByName(string wineName)
             {
                 List<Wine> wine = new List<Wine>();
@@ -389,6 +450,11 @@ namespace WineInventoryApp.Data
                 return wine;
             }
 
+            /// <summary>
+            /// Get a list of wine objects that match the given country of origin.
+            /// </summary>
+            /// <param name="origin">Country of origin.</param>
+            /// <returns>List of Wine objects matching the given origin.</returns>
             public static List<Wine> GetWineByOrigin(string origin)
             {
                 List<Wine> wine = new List<Wine>();
@@ -401,6 +467,11 @@ namespace WineInventoryApp.Data
                 return wine;
             }
 
+            /// <summary>
+            /// Get a list of wine objects that match the given wine type.
+            /// </summary>
+            /// <param name="type">Type of wine.</param>
+            /// <returns>List of Wine objects matching the given type of wine.</returns>
             public static List<Wine> GetWineByType(string type)
             {
                 List<Wine> wine = new List<Wine>();
@@ -413,6 +484,11 @@ namespace WineInventoryApp.Data
                 return wine;
             }
 
+            /// <summary>
+            /// Get a list of wine objects that match the given year.
+            /// </summary>
+            /// <param name="year">Vintage year of the wine to filter for.</param>
+            /// <returns>List of Wine objects matching the given vintage.</returns>
             public static List<Wine> GetWineByYear(int year)
             {
                 List<Wine> wine = new List<Wine>();
@@ -425,10 +501,22 @@ namespace WineInventoryApp.Data
                 return wine;
             }
 
-            public static int GetIdByName(string wineName)
+            /// <summary>
+            /// Gets the wine ID of a wine that matches the given name, vintage, and bottle volume. Returns -1 if
+            /// no wine matches the given criteria.
+            /// </summary>
+            /// <param name="wineName">Name of the wine.</param>
+            /// <param name="year">Vintage year.</param>
+            /// <param name="volume">Volume of one bottle.</param>
+            /// <returns>Wine ID with the given characteristics.</returns>
+            public static int GetIdByNameYearVolume(string wineName, int year, int volume)
             {
-                var data = tableManager.WineTableAdapter.GetWineByExactName(wineName);
-                if (data.Rows.Count != 1)
+                var data = tableManager.WineTableAdapter.GetWineByNameYearVolume(wineName, year, volume);
+                if(data.Rows.Count == 0)
+                {
+                    return -1;
+                }
+                else if (data.Rows.Count != 1)
                 {
                     throw new FormatException($"GetIdByName({wineName}) returned {data.Rows.Count} values.");
                 }
@@ -436,11 +524,31 @@ namespace WineInventoryApp.Data
                 return ((InventoryDataSet.WineRow)data.Rows[0]).WineId;
             }
 
+            /// <summary>
+            /// Updates the wine entry with the matching Wine ID.
+            /// </summary>
+            /// <param name="wineId">Wine ID to update.</param>
+            /// <param name="wineName">Wine name.</param>
+            /// <param name="origin">Country of origin.</param>
+            /// <param name="price">Price.</param>
+            /// <param name="year">Vintage year.</param>
+            /// <param name="volume">Volume of a bottle.</param>
+            /// <param name="type">Type of wine.</param>
+            /// <param name="image">Wine image. (Not used)</param>
             public static void UpdateWine(int wineId, string wineName, string origin, decimal price, int year, int volume, string type, byte[] image = null)
             {
                 tableManager.WineTableAdapter.UpdateWine(wineId, wineName, origin, price, year, volume, type, image);
             }
 
+            /// <summary>
+            /// Inserts a new entry into the Wine table.
+            /// </summary>
+            /// <param name="wineName">Wine name.</param>
+            /// <param name="origin">Country of origin.</param>
+            /// <param name="price">Price.</param>
+            /// <param name="year">Vintage year.</param>
+            /// <param name="volume">Volume of a bottle.</param>
+            /// <param name="type">Type of wine.</param>
             public static void InsertWine(string wineName, string origin, decimal price, int year, int volume, string type)
             {
                 string wine = wineName.Trim();
@@ -448,13 +556,21 @@ namespace WineInventoryApp.Data
                 {
                     throw new ArgumentException("InsertWine: wineName must be at least 1 character");
                 }
+                if(GetIdByNameYearVolume(wine, year, volume) != -1)
+                {
+                    return;
+                }
 
                 tableManager.WineTableAdapter.Insert(wine, origin, price, year, volume, type.Trim(), null);
-                int id = GetIdByName(wine);
+                int id = GetIdByNameYearVolume(wine, year, volume);
 
                 tableManager.InventoryTableAdapter.Insert(id, 0);
             }
 
+            /// <summary>
+            /// Delete the given wine from the database.
+            /// </summary>
+            /// <param name="wineId">Wine to delete.</param>
             public static void DeleteWine(int wineId)
             {
                 tableManager.InventoryTableAdapter.DeleteInventory(wineId);
@@ -470,13 +586,24 @@ namespace WineInventoryApp.Data
         }
 
         // INVENTORY TABLE
+        /// <summary>
+        /// Provides methods for accessing and modifying the Inventory table.
+        /// </summary>
         public static class InventoryTable
         {
+            /// <summary>
+            /// When a BindingSource is attached to a DataGridView, call this method to fill it with
+            /// every Inventory item in the database.
+            /// </summary>
             public static void QueryInventory()
             {
                 tableManager.InventoryTableAdapter.Fill(dataSet.Inventory);
             }
 
+            /// <summary>
+            /// Get a list of every InventoryItem in the database.
+            /// </summary>
+            /// <returns>List of InventoryItems.</returns>
             public static List<InventoryItem> GetInventory()
             {
                 List<InventoryItem> items = new List<InventoryItem>();
@@ -489,11 +616,22 @@ namespace WineInventoryApp.Data
                 return items;
             }
 
+            /// <summary>
+            /// Get the quantity for the wine matching the given wine ID.
+            /// </summary>
+            /// <param name="wineId">Wine to get quantity for.</param>
+            /// <returns>An integer representing the quantity on hand.</returns>
             public static int GetQuantity(int wineId)
             {
                 return tableManager.InventoryTableAdapter.GetQuantity(wineId) ?? 0;
             }
 
+            /// <summary>
+            /// Updates the quantity for the given wine. Tracks the user who made the change as well.
+            /// </summary>
+            /// <param name="wineId">Wine to update.</param>
+            /// <param name="quantity">Quantity to change to.</param>
+            /// <param name="userId">User who made the change.</param>
             public static void UpdateInventory(int wineId, int quantity, int userId)
             {
                 if (!UserTable.ContainsUserId(userId))
@@ -511,23 +649,44 @@ namespace WineInventoryApp.Data
         }
 
         // INVENTORY CHANGE TABLE
+        /// <summary>
+        /// Provides methods for accessing and modifying the InventoryChange table.
+        /// </summary>
         public static class InventoryChangeTable
         {
+            /// <summary>
+            /// When a BindingSource is attached to a DataGridView, call this method to fill it with
+            /// every InventoryChange in the database.
+            /// </summary>
             public static void QueryAllChanges()
             {
                 tableManager.InventoryChangeTableAdapter.Fill(dataSet.InventoryChange);
             }
 
+            /// <summary>
+            /// When a BindingSource is attached to a DataGridView, call this method to fill it with
+            /// every InventoryChange in the database that was created by the given user.
+            /// </summary>
+            /// <param name="userId">User to filter for.</param>
             public static void QueryChangesByUser(int userId)
             {
                 tableManager.InventoryChangeTableAdapter.FillByUserId(dataSet.InventoryChange, userId);
             }
 
+            /// <summary>
+            /// When a BindingSource is attached to a DataGridView, call this method to fill it with
+            /// every InventoryChange in the database that matches the given Wine ID.
+            /// </summary>
+            /// <param name="wineId">Wine ID to filter for.</param>
             public static void QueryChangesByWine(int wineId)
             {
                 tableManager.InventoryChangeTableAdapter.FillByWineId(dataSet.InventoryChange, wineId);
             }
 
+            /// <summary>
+            /// Gets a list of every InventoryChange in the database.
+            /// </summary>
+            /// <returns>List of InventoryChanges.</returns>
             public static List<InventoryChange> GetAllChanges()
             {
                 List<InventoryChange> changes = new List<InventoryChange>();
@@ -540,6 +699,11 @@ namespace WineInventoryApp.Data
                 return changes;
             }
 
+            /// <summary>
+            /// Gets a list of every InventoryChange in the database made by the given user.
+            /// </summary>
+            /// <param name="userId">User to filter for.</param>
+            /// <returns>List of InventoryChanges.</returns>
             public static List<InventoryChange> GetChangesByUser(int userId)
             {
                 List<InventoryChange> changes = new List<InventoryChange>();
@@ -552,6 +716,11 @@ namespace WineInventoryApp.Data
                 return changes;
             }
 
+            /// <summary>
+            /// Gets a list of every InventoryChange in the database done to the given wine.
+            /// </summary>
+            /// <param name="wineId">Wine ID to filter for.</param>
+            /// <returns>List of InventoryChanges.</returns>
             public static List<InventoryChange> GetChangesByWine(int wineId)
             {
                 List<InventoryChange> changes = new List<InventoryChange>();
