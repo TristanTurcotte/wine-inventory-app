@@ -5,10 +5,25 @@ using WineInventoryApp.Data.InventoryDataSetTableAdapters;
 
 namespace WineInventoryApp.Data
 {
+    /// <summary>
+    /// Controls access to the InventoryDatabase, acts as an interface for the 
+    /// rest of the application to read and write to the database.
+    /// </summary>
     static class AppDatabase
     {
+        /// <summary>
+        /// Length in bytes of the password hash.
+        /// </summary>
         public static readonly int HASH_BYTE_LEN = 32;
+
+        /// <summary>
+        /// Length in bytes of the password salt.
+        /// </summary>
         public static readonly int SALT_BYTE_LEN = 16;
+
+        /// <summary>
+        /// Minimum character length of a username.
+        /// </summary>
         public static readonly int USERNAME_MIN_LEN = 3;
 
         // Dataset
@@ -17,7 +32,7 @@ namespace WineInventoryApp.Data
         // Database table manager
         private static TableAdapterManager tableManager = new TableAdapterManager();
 
-        // Statis Constructor
+        // Static Constructor
         static AppDatabase()
         {
             tableManager.UserTableAdapter = new UserTableAdapter();
@@ -36,6 +51,10 @@ namespace WineInventoryApp.Data
             return bind;
         }
 
+        /// <summary>
+        /// Get a BindingSource that is bound to the User table. Attach this to a DataGridView.
+        /// </summary>
+        /// <returns>BindingSource to attach to a DataGridView as a datasource.</returns>
         public static BindingSource GetUserTableBinding()
         {
             BindingSource bs = GetDataBinding(dataSet.User);
@@ -43,44 +62,81 @@ namespace WineInventoryApp.Data
             return bs;
         }
 
+        /// <summary>
+        /// Get a BindingSource that is bound to the Password table. Attach this to a DataGridView.
+        /// </summary>
+        /// <returns>BindingSource to attach to a DataGridView as a datasource.</returns>
         public static BindingSource GetPasswordTableBinding()
         {
             return GetDataBinding(dataSet.Password);
         }
 
+        /// <summary>
+        /// Get a BindingSource that is bound to the Wine table. Attach this to a DataGridView.
+        /// </summary>
+        /// <returns>BindingSource to attach to a DataGridView as a datasource.</returns>
         public static BindingSource GetWineTableBinding()
         {
             return GetDataBinding(dataSet.Wine);
         }
 
+        /// <summary>
+        /// Get a BindingSource that is bound to the Inventory table. Attach this to a DataGridView.
+        /// </summary>
+        /// <returns>BindingSource to attach to a DataGridView as a datasource.</returns>
         public static BindingSource GetInventoryTableBinding()
         {
             return GetDataBinding(dataSet.Inventory);
         }
 
+        /// <summary>
+        /// Get a BindingSource that is bound to the InventoryChange table. Attach this to a DataGridView.
+        /// </summary>
+        /// <returns>BindingSource to attach to a DataGridView as a datasource.</returns>
         public static BindingSource GetInventoryChangeTableBinding()
         {
             return GetDataBinding(dataSet.InventoryChange);
         }
 
         // USER TABLE
+        /// <summary>
+        /// Provides methods for accessing and modifying the User table.
+        /// </summary>
         public static class UserTable
         {
+            /// <summary>
+            /// When a BindingSource is attached to a DataGridView, call this method to fill it with
+            /// every user in the database.
+            /// </summary>
             public static void QueryAllUsers()
             {
                 tableManager.UserTableAdapter.Fill(dataSet.User);
             }
 
+            /// <summary>
+            /// When a BindingSource is attached to a DataGridView, call this method to fill it with
+            /// every user in the database with a username that matches the given string.
+            /// </summary>
+            /// <param name="partialUsername">String to search for.</param>
             public static void QueryUsersByName(string partialUsername)
             {
                 tableManager.UserTableAdapter.FillByContainsUsername(dataSet.User, partialUsername.Trim());
             }
 
+            /// <summary>
+            /// When a BindingSource is attached to a DataGridView, call this method to fill it with
+            /// every user in the database with the same given access level.
+            /// </summary>
+            /// <param name="accessLevel">Access level to filter for.</param>
             public static void QueryUsersByAccessLevel(int accessLevel)
             {
                 tableManager.UserTableAdapter.FillByAccessLevel(dataSet.User, accessLevel);
             }
 
+            /// <summary>
+            /// Get a List of every user in the user table.
+            /// </summary>
+            /// <returns>List of type User.</returns>
             public static List<User> GetAllUsers()
             {
                 List<User> users = new List<User>();
@@ -93,6 +149,11 @@ namespace WineInventoryApp.Data
                 return users;
             }
 
+            /// <summary>
+            /// Get the user object of the given user id.
+            /// </summary>
+            /// <param name="userId">Which user to get data for.</param>
+            /// <returns>User object which matches the database entry.</returns>
             public static User GetUserById(int userId)
             {
                 var data = tableManager.UserTableAdapter.GetData().Rows;
@@ -134,6 +195,11 @@ namespace WineInventoryApp.Data
                 return data.Count >= 1;
             }
 
+            /// <summary>
+            /// Determines if the database contains the given user ID.
+            /// </summary>
+            /// <param name="userId">ID to validate.</param>
+            /// <returns>True, if and only if the user ID is contained in the table, otherwise false.</returns>
             public static bool ContainsUserId(int userId)
             {
                 var data = tableManager.UserTableAdapter.GetUserById(userId).Rows;
@@ -141,26 +207,53 @@ namespace WineInventoryApp.Data
                 return data.Count == 1;
             }
 
+            /// <summary>
+            /// Updates the access level of the given user ID.
+            /// </summary>
+            /// <param name="userId">User to update.</param>
+            /// <param name="access">Access level to be given.</param>
             public static void UpdateUserAccessLevel(int userId, int access)
             {
                 tableManager.UserTableAdapter.UpdateAccessLevel(userId, access);
             }
 
-            public static void UpdateUsername(int userId, string username)
+            /// <summary>
+            /// Updates the username of the given user ID. The new username must be unique.
+            /// </summary>
+            /// <param name="userId">User to update.</param>
+            /// <param name="username">User's new username.</param>
+            public static bool UpdateUsername(int userId, string username)
             {
                 string name = username.Trim();
 
                 if (name.Length > USERNAME_MIN_LEN && !ContainsUsername(name))
                 {
                     tableManager.UserTableAdapter.UpdateUsername(userId, name);
+                    return true;
                 }
+
+                return false;
             }
 
+            /// <summary>
+            /// Updates the last login time of the given user.
+            /// </summary>
+            /// <param name="userId">User to update.</param>
+            /// <param name="dateTime">Time and date of last login.</param>
             public static void UpdateLastLoginTime(int userId, DateTime dateTime)
             {
                 tableManager.UserTableAdapter.UpdateLoginTime(userId, dateTime);
             }
 
+            /// <summary>
+            /// Insert a new User entry into the User table. Returns -1 on failure, otherwise
+            /// it returns the new user's ID.
+            /// </summary>
+            /// <param name="username">Username for new user.</param>
+            /// <param name="access">Access level for new user.</param>
+            /// <param name="hash">Password hash length of 256 bits (32 bytes).</param>
+            /// <param name="salt">Password salt length of 128 bits (16 bytes).</param>
+            /// <returns>-1, if and only if the user was not created, otherwise returns the new user's ID.</returns>
             public static int InsertUser(string username, int access, byte[] hash, byte[] salt)
             {
                 if (hash.Length != HASH_BYTE_LEN || salt.Length != SALT_BYTE_LEN)
@@ -182,6 +275,11 @@ namespace WineInventoryApp.Data
                 return -1;
             }
 
+            /// <summary>
+            /// Deletes the given user's account from the database. Also deletes the user's
+            /// matching Password table entry.
+            /// </summary>
+            /// <param name="userId">User to delete.</param>
             public static void DeleteUser(int userId)
             {
                 tableManager.PasswordTableAdapter.DeletePassword(userId);
