@@ -31,6 +31,7 @@ namespace WineInventoryApp.Data
 
         // Database table manager
         private static TableAdapterManager tableManager = new TableAdapterManager();
+        private static WineInventoryTableAdapter wineInventoryTableAdapater = new WineInventoryTableAdapter();
 
         // Static Constructor
         static AppDatabase()
@@ -40,6 +41,7 @@ namespace WineInventoryApp.Data
             tableManager.WineTableAdapter = new WineTableAdapter();
             tableManager.InventoryTableAdapter = new InventoryTableAdapter();
             tableManager.InventoryChangeTableAdapter = new InventoryChangeTableAdapter();
+            wineInventoryTableAdapater.Fill(wineInventoryTableAdapater.GetData());
         }
 
         // Bind methods for GUI
@@ -96,6 +98,15 @@ namespace WineInventoryApp.Data
         public static BindingSource GetInventoryChangeTableBinding()
         {
             return GetDataBinding(dataSet.InventoryChange);
+        }
+
+        /// <summary>
+        /// Get a BindingSource that is bound to the WineInventory table. Includes wine quantity.
+        /// </summary>
+        /// <returns>BindingSource to attach to a DataGridView as a datasource.</returns>
+        public static BindingSource GetWineInventoryTableBinding()
+        {
+            return GetDataBinding(dataSet.WineInventory);
         }
 
         // USER TABLE
@@ -731,6 +742,71 @@ namespace WineInventoryApp.Data
                 }
 
                 return changes;
+            }
+        }
+
+        /// <summary>
+        /// Provides methods for accessing and the WineInventory table.
+        /// </summary>
+        public static class WineInventoryTable
+        {
+            /// <summary>
+            /// When a BindingSource is attached to a DataGridView, call this method to fill it with
+            /// every wine inventory item in the database.
+            /// </summary>
+            public static void QueryAllWineInventory()
+            {
+                wineInventoryTableAdapater.Fill(wineInventoryTableAdapater.GetData());
+            }
+
+            /// <summary>
+            /// When a BindingSource is attached to a DataGridView, call this method to fill it with
+            /// every wine inventory item in the database matching the given name.
+            /// </summary>
+            /// <param name="wineName">Wine name.</param>
+            public static void QueryWineByName(string wineName)
+            {
+                wineInventoryTableAdapater.FillByWineName(dataSet.WineInventory, wineName.Trim());
+            }
+
+            /// <summary>
+            /// When a BindingSource is attached to a DataGridView, call this method to fill it with
+            /// every wine inventory item in the database matching the given country of origin.
+            /// </summary>
+            /// <param name="origin">Country of origin.</param>
+            public static void QueryWineByOrigin(string origin)
+            {
+                wineInventoryTableAdapater.FillByOrigin(dataSet.WineInventory, origin.Trim());
+            }
+
+            /// <summary>
+            /// When a BindingSource is attached to a DataGridView, call this method to fill it with
+            /// every wine inventory item in the database matching the given type of wine.
+            /// </summary>
+            /// <param name="type">Type of wine.</param>
+            public static void QueryWineByType(string type)
+            {
+                wineInventoryTableAdapater.FillByType(dataSet.WineInventory, type.Trim());
+            }
+
+            /// <summary>
+            /// When a BindingSource is attached to a DataGridView, call this method to fill it with
+            /// every wine inventory item in the database matching the given vintage year exactly.
+            /// </summary>
+            /// <params>Vintage year of the wine.</params>
+            public static void QueryWineByYear(int year)
+            {
+                wineInventoryTableAdapater.FillByYear(dataSet.WineInventory, year);
+            }
+
+            /// <summary>
+            /// When a BindingSource is attached to a DataGridView, call this method to fill it with
+            /// every wine inventory item in the database having at most the given quantity on hand.
+            /// </summary>
+            /// <param name="quantity">Quantity on hand.</param>
+            public static void QuerryWineByAtMostQuantity(int quantity)
+            {
+                wineInventoryTableAdapater.FillByAtMostQuantity(dataSet.WineInventory, quantity);
             }
         }
     }

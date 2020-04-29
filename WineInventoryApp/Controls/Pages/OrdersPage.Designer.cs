@@ -29,72 +29,64 @@
         private void InitializeComponent()
         {
             this.titleLabel = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.filterLabel = new System.Windows.Forms.Label();
+            this.quantityFilterTextBox = new System.Windows.Forms.TextBox();
+            this.orderDataGridView = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.orderDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // titleLabel
             // 
             this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleLabel.Location = new System.Drawing.Point(305, 9);
+            this.titleLabel.Location = new System.Drawing.Point(246, 10);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(113, 41);
+            this.titleLabel.Size = new System.Drawing.Size(199, 41);
             this.titleLabel.TabIndex = 0;
-            this.titleLabel.Text = "Order";
+            this.titleLabel.Text = "Order Wine";
             this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panel1
+            // filterLabel
             // 
-            this.panel1.AutoScroll = true;
-            this.panel1.Location = new System.Drawing.Point(13, 154);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(751, 335);
-            this.panel1.TabIndex = 1;
+            this.filterLabel.AutoSize = true;
+            this.filterLabel.Font = new System.Drawing.Font("Microsoft Tai Le", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.filterLabel.Location = new System.Drawing.Point(3, 63);
+            this.filterLabel.Name = "filterLabel";
+            this.filterLabel.Size = new System.Drawing.Size(263, 16);
+            this.filterLabel.TabIndex = 2;
+            this.filterLabel.Text = "Only show wine with at most given Quantity:";
             // 
-            // label3
+            // quantityFilterTextBox
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(554, 105);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(115, 25);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Total Price";
+            this.quantityFilterTextBox.Location = new System.Drawing.Point(272, 61);
+            this.quantityFilterTextBox.Name = "quantityFilterTextBox";
+            this.quantityFilterTextBox.Size = new System.Drawing.Size(45, 20);
+            this.quantityFilterTextBox.TabIndex = 3;
+            this.quantityFilterTextBox.Text = "20";
+            this.quantityFilterTextBox.TextChanged += new System.EventHandler(this.quantityFilterTextBox_TextChanged);
+            this.quantityFilterTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.quantityFilterTextBox_KeyDown);
             // 
-            // label2
+            // orderDataGridView
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(340, 105);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 25);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Date";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(112, 105);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 25);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Order ID";
+            this.orderDataGridView.AllowUserToAddRows = false;
+            this.orderDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.orderDataGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.orderDataGridView.Location = new System.Drawing.Point(0, 87);
+            this.orderDataGridView.Name = "orderDataGridView";
+            this.orderDataGridView.ReadOnly = true;
+            this.orderDataGridView.Size = new System.Drawing.Size(696, 317);
+            this.orderDataGridView.TabIndex = 0;
             // 
             // OrdersPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(776, 501);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.orderDataGridView);
+            this.Controls.Add(this.quantityFilterTextBox);
+            this.Controls.Add(this.filterLabel);
             this.Controls.Add(this.titleLabel);
-            this.Controls.Add(this.label1);
             this.Name = "OrdersPage";
-            this.Text = "OrdersPage";
+            this.Size = new System.Drawing.Size(696, 404);
+            ((System.ComponentModel.ISupportInitialize)(this.orderDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -103,9 +95,8 @@
         #endregion
 
         private System.Windows.Forms.Label titleLabel;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label filterLabel;
+        private System.Windows.Forms.TextBox quantityFilterTextBox;
+        private System.Windows.Forms.DataGridView orderDataGridView;
     }
 }
