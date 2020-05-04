@@ -409,7 +409,7 @@ namespace WineInventoryApp.Data
                 var data = tableManager.WineTableAdapter.GetData();
                 foreach (var w in data)
                 {
-                    wine.Add(new Wine(w.WineId, w.WineName, w.Origin, w.Price, w.Year, w.Volume, w.Type, w.Image));
+                    wine.Add(new Wine(w.WineId, w.WineName, w.Origin, w.Price, w.Year, w.Volume, w.Type, new byte[0]));
                 }
 
                 return wine;

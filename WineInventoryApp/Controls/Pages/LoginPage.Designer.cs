@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.invalidEntryLabel = new System.Windows.Forms.Label();
             this.signInButton = new System.Windows.Forms.Button();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.usernameTextBox = new System.Windows.Forms.TextBox();
@@ -39,7 +40,6 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.invalidEntryLabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -62,6 +62,18 @@
             this.groupBox1.Size = new System.Drawing.Size(225, 231);
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
+            // 
+            // invalidEntryLabel
+            // 
+            this.invalidEntryLabel.AutoSize = true;
+            this.invalidEntryLabel.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.invalidEntryLabel.ForeColor = System.Drawing.Color.Red;
+            this.invalidEntryLabel.Location = new System.Drawing.Point(22, 61);
+            this.invalidEntryLabel.Name = "invalidEntryLabel";
+            this.invalidEntryLabel.Size = new System.Drawing.Size(166, 14);
+            this.invalidEntryLabel.TabIndex = 6;
+            this.invalidEntryLabel.Text = "Invalid username or password.";
+            this.invalidEntryLabel.Visible = false;
             // 
             // signInButton
             // 
@@ -165,18 +177,6 @@
             this.pictureBox1.TabIndex = 15;
             this.pictureBox1.TabStop = false;
             // 
-            // invalidEntryLabel
-            // 
-            this.invalidEntryLabel.AutoSize = true;
-            this.invalidEntryLabel.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.invalidEntryLabel.ForeColor = System.Drawing.Color.Red;
-            this.invalidEntryLabel.Location = new System.Drawing.Point(22, 61);
-            this.invalidEntryLabel.Name = "invalidEntryLabel";
-            this.invalidEntryLabel.Size = new System.Drawing.Size(166, 14);
-            this.invalidEntryLabel.TabIndex = 6;
-            this.invalidEntryLabel.Text = "Invalid username or password.";
-            this.invalidEntryLabel.Visible = false;
-            // 
             // LoginPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -187,9 +187,9 @@
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
-            this.MinimumSize = new System.Drawing.Size(800, 426);
+            this.MinimumSize = new System.Drawing.Size(723, 426);
             this.Name = "LoginPage";
-            this.Size = new System.Drawing.Size(800, 426);
+            this.Size = new System.Drawing.Size(723, 426);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
