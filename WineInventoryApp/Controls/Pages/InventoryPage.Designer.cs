@@ -96,7 +96,7 @@
             this.textBox1.TabIndex = 8;
             this.textBox1.Text = "Search";
             // 
-            // Inventory
+            // InventoryPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -107,8 +107,8 @@
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
-            this.Name = "Inventory";
-            this.Size = new System.Drawing.Size(800, 426);
+            this.Name = "InventoryPage";
+            this.Size = new System.Drawing.Size(723, 426);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();

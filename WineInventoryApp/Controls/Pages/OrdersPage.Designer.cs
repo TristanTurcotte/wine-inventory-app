@@ -30,20 +30,20 @@
         {
             this.titleLabel = new System.Windows.Forms.Label();
             this.pendingOrdersListView = new BrightIdeasSoftware.ObjectListView();
-            this.wineNameColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.wineQtyColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.wineNameColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.vintageColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.volumeColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.printOrdersButton = new System.Windows.Forms.Button();
             this.orderInventoryPanel = new System.Windows.Forms.Panel();
             this.inventoryHeaderLabel = new System.Windows.Forms.Label();
             this.ordersPanel = new System.Windows.Forms.Panel();
-            this.orderHeaderLabel = new System.Windows.Forms.Label();
             this.ordersListView = new BrightIdeasSoftware.ObjectListView();
             this.olvColumn1 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn2 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn3 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn4 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.orderHeaderLabel = new System.Windows.Forms.Label();
             this.transferRightButton = new System.Windows.Forms.Button();
             this.transferLeftButton = new System.Windows.Forms.Button();
             this.orderPageContentPanel = new System.Windows.Forms.Panel();
@@ -60,7 +60,7 @@
             this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titleLabel.Location = new System.Drawing.Point(0, 0);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(696, 41);
+            this.titleLabel.Size = new System.Drawing.Size(723, 41);
             this.titleLabel.TabIndex = 0;
             this.titleLabel.Text = "Order Wine";
             this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -89,17 +89,17 @@
             this.pendingOrdersListView.UseCompatibleStateImageBehavior = false;
             this.pendingOrdersListView.View = System.Windows.Forms.View.Details;
             // 
-            // wineNameColumn
-            // 
-            this.wineNameColumn.AspectName = "WineName";
-            this.wineNameColumn.Text = "Name";
-            this.wineNameColumn.Width = 154;
-            // 
             // wineQtyColumn
             // 
             this.wineQtyColumn.AspectName = "Quantity";
             this.wineQtyColumn.Text = "Qty";
             this.wineQtyColumn.Width = 32;
+            // 
+            // wineNameColumn
+            // 
+            this.wineNameColumn.AspectName = "WineName";
+            this.wineNameColumn.Text = "Name";
+            this.wineNameColumn.Width = 154;
             // 
             // vintageColumn
             // 
@@ -117,7 +117,7 @@
             // 
             // printOrdersButton
             // 
-            this.printOrdersButton.Location = new System.Drawing.Point(308, 324);
+            this.printOrdersButton.Location = new System.Drawing.Point(323, 324);
             this.printOrdersButton.Name = "printOrdersButton";
             this.printOrdersButton.Size = new System.Drawing.Size(75, 23);
             this.printOrdersButton.TabIndex = 2;
@@ -149,21 +149,10 @@
             // 
             this.ordersPanel.Controls.Add(this.ordersListView);
             this.ordersPanel.Controls.Add(this.orderHeaderLabel);
-            this.ordersPanel.Location = new System.Drawing.Point(409, 10);
+            this.ordersPanel.Location = new System.Drawing.Point(440, 10);
             this.ordersPanel.Name = "ordersPanel";
             this.ordersPanel.Size = new System.Drawing.Size(275, 337);
             this.ordersPanel.TabIndex = 4;
-            // 
-            // orderHeaderLabel
-            // 
-            this.orderHeaderLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.orderHeaderLabel.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.orderHeaderLabel.Location = new System.Drawing.Point(0, 0);
-            this.orderHeaderLabel.Name = "orderHeaderLabel";
-            this.orderHeaderLabel.Size = new System.Drawing.Size(275, 22);
-            this.orderHeaderLabel.TabIndex = 2;
-            this.orderHeaderLabel.Text = "Order List";
-            this.orderHeaderLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // ordersListView
             // 
@@ -215,10 +204,21 @@
             this.olvColumn4.Text = "Vol (ml)";
             this.olvColumn4.Width = 50;
             // 
+            // orderHeaderLabel
+            // 
+            this.orderHeaderLabel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.orderHeaderLabel.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.orderHeaderLabel.Location = new System.Drawing.Point(0, 0);
+            this.orderHeaderLabel.Name = "orderHeaderLabel";
+            this.orderHeaderLabel.Size = new System.Drawing.Size(275, 22);
+            this.orderHeaderLabel.TabIndex = 2;
+            this.orderHeaderLabel.Text = "Order List";
+            this.orderHeaderLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // transferRightButton
             // 
             this.transferRightButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.transferRightButton.Location = new System.Drawing.Point(329, 142);
+            this.transferRightButton.Location = new System.Drawing.Point(344, 142);
             this.transferRightButton.Name = "transferRightButton";
             this.transferRightButton.Size = new System.Drawing.Size(35, 29);
             this.transferRightButton.TabIndex = 5;
@@ -229,7 +229,7 @@
             // transferLeftButton
             // 
             this.transferLeftButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.transferLeftButton.Location = new System.Drawing.Point(329, 191);
+            this.transferLeftButton.Location = new System.Drawing.Point(344, 191);
             this.transferLeftButton.Name = "transferLeftButton";
             this.transferLeftButton.Size = new System.Drawing.Size(35, 29);
             this.transferLeftButton.TabIndex = 6;
@@ -247,7 +247,7 @@
             this.orderPageContentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.orderPageContentPanel.Location = new System.Drawing.Point(0, 41);
             this.orderPageContentPanel.Name = "orderPageContentPanel";
-            this.orderPageContentPanel.Size = new System.Drawing.Size(696, 363);
+            this.orderPageContentPanel.Size = new System.Drawing.Size(723, 363);
             this.orderPageContentPanel.TabIndex = 7;
             // 
             // OrdersPage
@@ -257,7 +257,7 @@
             this.Controls.Add(this.orderPageContentPanel);
             this.Controls.Add(this.titleLabel);
             this.Name = "OrdersPage";
-            this.Size = new System.Drawing.Size(696, 404);
+            this.Size = new System.Drawing.Size(723, 404);
             ((System.ComponentModel.ISupportInitialize)(this.pendingOrdersListView)).EndInit();
             this.orderInventoryPanel.ResumeLayout(false);
             this.ordersPanel.ResumeLayout(false);
