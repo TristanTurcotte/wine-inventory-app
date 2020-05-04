@@ -76,7 +76,13 @@ namespace WineInventoryApp.Controls.Pages
         private void removeWineButton_Click(object sender, EventArgs e)
         {
             // TODO: Implement permanently delete wine entry.
-             // Create an 'are you sure?' dialog box.
+            // Create an 'are you sure?' dialog box.
+            DialogResult dialogResult = MessageBox.Show("Are you sure?", "Delete Entry", MessageBoxButtons.YesNo);
+            if(dialogResult == DialogResult.Yes)
+            {
+                int index = inventoryListView.SelectedIndex;
+                inventoryListView.GetItem(index).Remove();
+            }
         }
 
         private void searchTextBox_TextChanged(object sender, EventArgs e)
