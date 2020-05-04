@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace WineInventoryApp.Data
 {
     class OrderListItem
     {
         public int Quantity { get; set; }
-        public String WineName { get; set; }
+        public string WineName { get; set; }
         public int Year { get; set; }
         public int Volume { get; set; }
 
@@ -36,7 +35,7 @@ namespace WineInventoryApp.Data
 
         public override string ToString()
         {
-            return string.Format("{{Q:{0}, N:{1}, Y:{2}, V:{3}}", Quantity, WineName, Year, Volume);
+            return string.Format("{{Q:{0}, N:{1}, Y:{2}, V:{3}}}", Quantity, WineName, Year, Volume);
         }
     }
 }

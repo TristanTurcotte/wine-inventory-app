@@ -113,6 +113,7 @@
       <DependentUpon>InventoryDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Data\InventoryItem.cs" />
+    <Compile Include="Data\InventoryListItem.cs" />
     <Compile Include="Data\OrderListItem.cs" />
     <Compile Include="Data\User.cs" />
     <Compile Include="Data\Wine.cs" />
