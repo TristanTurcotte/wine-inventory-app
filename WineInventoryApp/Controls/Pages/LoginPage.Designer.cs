@@ -187,9 +187,9 @@
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
-            this.MinimumSize = new System.Drawing.Size(723, 426);
+            this.MinimumSize = new System.Drawing.Size(800, 426);
             this.Name = "LoginPage";
-            this.Size = new System.Drawing.Size(723, 426);
+            this.Size = new System.Drawing.Size(800, 426);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
