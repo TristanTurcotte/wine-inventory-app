@@ -47,20 +47,22 @@
             this.transferRightButton = new System.Windows.Forms.Button();
             this.transferLeftButton = new System.Windows.Forms.Button();
             this.orderPageContentPanel = new System.Windows.Forms.Panel();
+            this.titleLinePicture = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pendingOrdersListView)).BeginInit();
             this.orderInventoryPanel.SuspendLayout();
             this.ordersPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ordersListView)).BeginInit();
             this.orderPageContentPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.titleLinePicture)).BeginInit();
             this.SuspendLayout();
             // 
             // titleLabel
             // 
             this.titleLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLabel.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titleLabel.Location = new System.Drawing.Point(0, 0);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(723, 41);
+            this.titleLabel.Size = new System.Drawing.Size(723, 26);
             this.titleLabel.TabIndex = 0;
             this.titleLabel.Text = "Order Wine";
             this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -137,7 +139,7 @@
             // inventoryHeaderLabel
             // 
             this.inventoryHeaderLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.inventoryHeaderLabel.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inventoryHeaderLabel.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.inventoryHeaderLabel.Location = new System.Drawing.Point(0, 0);
             this.inventoryHeaderLabel.Name = "inventoryHeaderLabel";
             this.inventoryHeaderLabel.Size = new System.Drawing.Size(275, 22);
@@ -207,7 +209,7 @@
             // orderHeaderLabel
             // 
             this.orderHeaderLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.orderHeaderLabel.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.orderHeaderLabel.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.orderHeaderLabel.Location = new System.Drawing.Point(0, 0);
             this.orderHeaderLabel.Name = "orderHeaderLabel";
             this.orderHeaderLabel.Size = new System.Drawing.Size(275, 22);
@@ -245,16 +247,29 @@
             this.orderPageContentPanel.Controls.Add(this.transferRightButton);
             this.orderPageContentPanel.Controls.Add(this.ordersPanel);
             this.orderPageContentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.orderPageContentPanel.Location = new System.Drawing.Point(0, 41);
+            this.orderPageContentPanel.Location = new System.Drawing.Point(0, 44);
             this.orderPageContentPanel.Name = "orderPageContentPanel";
-            this.orderPageContentPanel.Size = new System.Drawing.Size(723, 363);
+            this.orderPageContentPanel.Size = new System.Drawing.Size(723, 360);
             this.orderPageContentPanel.TabIndex = 7;
+            // 
+            // titleLinePicture
+            // 
+            this.titleLinePicture.Dock = System.Windows.Forms.DockStyle.Top;
+            this.titleLinePicture.Image = global::WineInventoryApp.Properties.Resources.Line;
+            this.titleLinePicture.Location = new System.Drawing.Point(0, 26);
+            this.titleLinePicture.Name = "titleLinePicture";
+            this.titleLinePicture.Size = new System.Drawing.Size(723, 18);
+            this.titleLinePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.titleLinePicture.TabIndex = 8;
+            this.titleLinePicture.TabStop = false;
             // 
             // OrdersPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.orderPageContentPanel);
+            this.Controls.Add(this.titleLinePicture);
             this.Controls.Add(this.titleLabel);
             this.Name = "OrdersPage";
             this.Size = new System.Drawing.Size(723, 404);
@@ -263,6 +278,7 @@
             this.ordersPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ordersListView)).EndInit();
             this.orderPageContentPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.titleLinePicture)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -288,5 +304,6 @@
         private System.Windows.Forms.Button transferRightButton;
         private System.Windows.Forms.Button transferLeftButton;
         private System.Windows.Forms.Panel orderPageContentPanel;
+        private System.Windows.Forms.PictureBox titleLinePicture;
     }
 }
