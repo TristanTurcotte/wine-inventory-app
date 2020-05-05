@@ -156,7 +156,7 @@ namespace WineInventoryApp.Data
             /// <returns>User object which matches the database entry.</returns>
             public static User GetUserById(int userId)
             {
-                var data = tableManager.UserTableAdapter.GetData().Rows;
+                var data = tableManager.UserTableAdapter.GetUserById(userId).Rows;
                 if (data.Count != 1)
                 {
                     throw new FormatException($"GetUserById({userId}) returned {data.Count} values.");
