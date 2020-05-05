@@ -48,6 +48,7 @@
             this.transferLeftButton = new System.Windows.Forms.Button();
             this.orderPageContentPanel = new System.Windows.Forms.Panel();
             this.titleLinePicture = new System.Windows.Forms.PictureBox();
+            this.olvColumn5 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             ((System.ComponentModel.ISupportInitialize)(this.pendingOrdersListView)).BeginInit();
             this.orderInventoryPanel.SuspendLayout();
             this.ordersPanel.SuspendLayout();
@@ -119,7 +120,7 @@
             // 
             // printOrdersButton
             // 
-            this.printOrdersButton.Location = new System.Drawing.Point(323, 324);
+            this.printOrdersButton.Location = new System.Drawing.Point(292, 320);
             this.printOrdersButton.Name = "printOrdersButton";
             this.printOrdersButton.Size = new System.Drawing.Size(75, 23);
             this.printOrdersButton.TabIndex = 2;
@@ -151,20 +152,23 @@
             // 
             this.ordersPanel.Controls.Add(this.ordersListView);
             this.ordersPanel.Controls.Add(this.orderHeaderLabel);
-            this.ordersPanel.Location = new System.Drawing.Point(440, 10);
+            this.ordersPanel.Location = new System.Drawing.Point(378, 10);
             this.ordersPanel.Name = "ordersPanel";
-            this.ordersPanel.Size = new System.Drawing.Size(275, 337);
+            this.ordersPanel.Size = new System.Drawing.Size(337, 337);
             this.ordersPanel.TabIndex = 4;
             // 
             // ordersListView
             // 
             this.ordersListView.AllColumns.Add(this.olvColumn1);
+            this.ordersListView.AllColumns.Add(this.olvColumn5);
             this.ordersListView.AllColumns.Add(this.olvColumn2);
             this.ordersListView.AllColumns.Add(this.olvColumn3);
             this.ordersListView.AllColumns.Add(this.olvColumn4);
+            this.ordersListView.CellEditActivation = BrightIdeasSoftware.ObjectListView.CellEditActivateMode.SingleClick;
             this.ordersListView.CellEditUseWholeCell = false;
             this.ordersListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.olvColumn1,
+            this.olvColumn5,
             this.olvColumn2,
             this.olvColumn3,
             this.olvColumn4});
@@ -175,7 +179,7 @@
             this.ordersListView.Location = new System.Drawing.Point(0, 22);
             this.ordersListView.Name = "ordersListView";
             this.ordersListView.ShowGroups = false;
-            this.ordersListView.Size = new System.Drawing.Size(275, 315);
+            this.ordersListView.Size = new System.Drawing.Size(337, 315);
             this.ordersListView.TabIndex = 1;
             this.ordersListView.UseCompatibleStateImageBehavior = false;
             this.ordersListView.View = System.Windows.Forms.View.Details;
@@ -183,18 +187,21 @@
             // olvColumn1
             // 
             this.olvColumn1.AspectName = "Quantity";
+            this.olvColumn1.IsEditable = false;
             this.olvColumn1.Text = "Qty";
             this.olvColumn1.Width = 32;
             // 
             // olvColumn2
             // 
             this.olvColumn2.AspectName = "WineName";
+            this.olvColumn2.IsEditable = false;
             this.olvColumn2.Text = "Name";
             this.olvColumn2.Width = 154;
             // 
             // olvColumn3
             // 
             this.olvColumn3.AspectName = "Year";
+            this.olvColumn3.IsEditable = false;
             this.olvColumn3.MaximumWidth = 35;
             this.olvColumn3.Text = "Year";
             this.olvColumn3.Width = 35;
@@ -202,6 +209,7 @@
             // olvColumn4
             // 
             this.olvColumn4.AspectName = "Volume";
+            this.olvColumn4.IsEditable = false;
             this.olvColumn4.MaximumWidth = 60;
             this.olvColumn4.Text = "Vol (ml)";
             this.olvColumn4.Width = 50;
@@ -212,7 +220,7 @@
             this.orderHeaderLabel.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.orderHeaderLabel.Location = new System.Drawing.Point(0, 0);
             this.orderHeaderLabel.Name = "orderHeaderLabel";
-            this.orderHeaderLabel.Size = new System.Drawing.Size(275, 22);
+            this.orderHeaderLabel.Size = new System.Drawing.Size(337, 22);
             this.orderHeaderLabel.TabIndex = 2;
             this.orderHeaderLabel.Text = "Order List";
             this.orderHeaderLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -220,7 +228,7 @@
             // transferRightButton
             // 
             this.transferRightButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.transferRightButton.Location = new System.Drawing.Point(344, 142);
+            this.transferRightButton.Location = new System.Drawing.Point(313, 138);
             this.transferRightButton.Name = "transferRightButton";
             this.transferRightButton.Size = new System.Drawing.Size(35, 29);
             this.transferRightButton.TabIndex = 5;
@@ -231,7 +239,7 @@
             // transferLeftButton
             // 
             this.transferLeftButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.transferLeftButton.Location = new System.Drawing.Point(344, 191);
+            this.transferLeftButton.Location = new System.Drawing.Point(313, 187);
             this.transferLeftButton.Name = "transferLeftButton";
             this.transferLeftButton.Size = new System.Drawing.Size(35, 29);
             this.transferLeftButton.TabIndex = 6;
@@ -262,6 +270,11 @@
             this.titleLinePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.titleLinePicture.TabIndex = 8;
             this.titleLinePicture.TabStop = false;
+            // 
+            // olvColumn5
+            // 
+            this.olvColumn5.AspectName = "QuantityToOrder";
+            this.olvColumn5.Text = "To Order";
             // 
             // OrdersPage
             // 
@@ -305,5 +318,6 @@
         private System.Windows.Forms.Button transferLeftButton;
         private System.Windows.Forms.Panel orderPageContentPanel;
         private System.Windows.Forms.PictureBox titleLinePicture;
+        private BrightIdeasSoftware.OLVColumn olvColumn5;
     }
 }
