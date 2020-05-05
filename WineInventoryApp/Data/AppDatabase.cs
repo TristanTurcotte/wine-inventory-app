@@ -156,7 +156,7 @@ namespace WineInventoryApp.Data
             /// <returns>User object which matches the database entry.</returns>
             public static User GetUserById(int userId)
             {
-                var data = tableManager.UserTableAdapter.GetData().Rows;
+                var data = tableManager.UserTableAdapter.GetUserById(userId).Rows;
                 if (data.Count != 1)
                 {
                     throw new FormatException($"GetUserById({userId}) returned {data.Count} values.");
@@ -265,7 +265,7 @@ namespace WineInventoryApp.Data
 
                 if (name.Length > USERNAME_MIN_LEN && !ContainsUsername(name))
                 {
-                    tableManager.UserTableAdapter.Insert(name, access, DateTime.Today, null);
+                    tableManager.UserTableAdapter.Insert(name, access, DateTime.Today, DateTime.Now);
                     int userId = GetUserIdByName(name);
                     tableManager.PasswordTableAdapter.InsertPassword(userId, hash, salt);
 

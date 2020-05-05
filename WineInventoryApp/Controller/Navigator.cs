@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using WineInventoryApp.Data;
 
 namespace WineInventoryApp.Controller
 {
@@ -63,6 +64,11 @@ namespace WineInventoryApp.Controller
         /// <param name="visible">If the navigation panel is to be visible and active.</param>
         public void SetNavigationPanelVisible(bool visible)
         {
+            if(Accounts.CurrentUserId != -1)
+            {
+                int access = AppDatabase.UserTable.GetUserById(Accounts.CurrentUserId).AccessLevel;
+                form.SetAccountManagementButton(access >= 2);
+            }
             form.SetNavigationPanel(visible);
         }
 
@@ -158,6 +164,8 @@ namespace WineInventoryApp.Controller
             navList.Clear();
             navList.Add(currentPage);
             navigationIndex = 0;
+
+            form.UpdateBackForwardButtons();
         }
 
         /// <summary>

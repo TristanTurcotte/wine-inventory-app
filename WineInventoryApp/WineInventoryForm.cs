@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WineInventoryApp.Controller;
 using WineInventoryApp.Controls.Pages;
@@ -14,7 +7,6 @@ namespace WineInventoryApp
 {
     public partial class WineInventoryForm : Form
     {
-        private bool loggedIn;
         private Navigator navigator;
 
         public WineInventoryForm()
@@ -25,7 +17,6 @@ namespace WineInventoryApp
             navigator = new Navigator(this, contentPanel);
 
             // Prepare the initial login page
-            loggedIn = false;
             LoginPage loginPage = new LoginPage();
 
             navigator.NavigateForward(loginPage);
@@ -35,6 +26,11 @@ namespace WineInventoryApp
         {
             navPanel.Enabled = enabled;
             navPanel.Visible = enabled;
+        }
+
+        public void SetAccountManagementButton(bool enabled)
+        {
+            navAccountsButton.Enabled = enabled;
         }
 
         //=================================//
@@ -73,11 +69,6 @@ namespace WineInventoryApp
             navigator.NavigateForward(new InventoryPage());
         }
 
-        private void navWineListButton_Click(object sender, EventArgs e)
-        {
-            // Non-existant
-        }
-
         private void navOrdersButton_Click(object sender, EventArgs e)
         {
             navigator.NavigateForward(new OrdersPage());
@@ -90,7 +81,8 @@ namespace WineInventoryApp
 
         private void navLogoutButton_Click(object sender, EventArgs e)
         {
-            loggedIn = false;
+            Accounts.Logout();
+
             navigator.NavigateForward(new LoginPage());
             navigator.PurgeNavigationHistory();
 

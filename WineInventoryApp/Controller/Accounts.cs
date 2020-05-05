@@ -12,6 +12,8 @@ namespace WineInventoryApp.Controller
 {
     class Accounts
     {
+        public static int CurrentUserId { get; private set; }
+
         public static bool TryLogin(string username, string password)
         {
             // Validate that the username exists
@@ -21,10 +23,27 @@ namespace WineInventoryApp.Controller
             }
 
             int userId = AppDatabase.UserTable.GetUserIdByName(username);
+
+            if(AppDatabase.UserTable.GetUserById(userId).AccessLevel == 0)
+            {
+                return false;
+            }
+
             byte[] salt = GetUserSalt(userId);
             byte[] inputHash = HashPassword(password, salt);
 
-            return CompareHashedPassword(userId, inputHash);
+            bool logged = CompareHashedPassword(userId, inputHash);
+            if(logged)
+            {
+                CurrentUserId = userId;
+            }
+
+            return logged;
+        }
+
+        public static void Logout()
+        {
+            CurrentUserId = -1;
         }
 
         /// <summary>
@@ -43,6 +62,13 @@ namespace WineInventoryApp.Controller
             return !AppDatabase.UserTable.ContainsUsername(name);
         }
 
+        public static bool ValidatePassword(string password)
+        {
+            string pass = password.Trim();
+
+            return pass.Length >= AppDatabase.USERNAME_MIN_LEN;
+        }
+
         /// <summary>
         /// Creates a user with the given username, password and access level. Returns the
         /// UserId of the new user, -1 if a new user could not be created.
@@ -54,7 +80,7 @@ namespace WineInventoryApp.Controller
         public static int CreateUser(string username, string password, int accessLevel = 1)
         {
             bool validUsername = ValidateUsername(username);
-            bool validPassword = password.Length > 3;
+            bool validPassword = ValidatePassword(password);
             if(!validUsername || !validPassword)
             {
                 return -1;
@@ -74,6 +100,14 @@ namespace WineInventoryApp.Controller
             Debug.WriteLine("Hash: [" + string.Join(", ", hash) + "]");
 
             return AppDatabase.UserTable.InsertUser(username, accessLevel, hash, salt);
+        }
+
+        public static void UpdatePassword(int userId, string password)
+        {
+            byte[] salt = GenerateSalt();
+            byte[] hash = HashPassword(password, salt);
+
+            AppDatabase.PasswordTable.UpdatePassword(userId, hash, salt);
         }
 
         /// <summary>

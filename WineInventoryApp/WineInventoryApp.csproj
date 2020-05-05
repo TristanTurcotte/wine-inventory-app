@@ -70,6 +70,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\Dialogs\AccountDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Dialogs\AccountDialog.Designer.cs">
+      <DependentUpon>AccountDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controller\Accounts.cs" />
     <Compile Include="Controller\Navigator.cs" />
     <Compile Include="Controls\Pages\AccountMgmtPage.cs">
@@ -117,6 +123,12 @@
     <Compile Include="Data\OrderListItem.cs" />
     <Compile Include="Data\User.cs" />
     <Compile Include="Data\Wine.cs" />
+    <Compile Include="Controls\Dialogs\PasswordDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Dialogs\PasswordDialog.Designer.cs">
+      <DependentUpon>PasswordDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="WineInventoryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +137,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Controls\Dialogs\AccountDialog.resx">
+      <DependentUpon>AccountDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\Pages\AccountMgmtPage.resx">
       <DependentUpon>AccountMgmtPage.cs</DependentUpon>
     </EmbeddedResource>
@@ -139,6 +154,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Pages\InventoryPage.resx">
       <DependentUpon>InventoryPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Dialogs\PasswordDialog.resx">
+      <DependentUpon>PasswordDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
