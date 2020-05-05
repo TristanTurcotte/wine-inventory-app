@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WineInventoryApp.Controller;
 
@@ -18,7 +11,7 @@ namespace WineInventoryApp.Controls.Pages
         {
             InitializeComponent();
 
-            int userId = Accounts.CreateUser("testadmin", "123321", 3);
+            int userId = Accounts.CreateUser("testadmin", "123321", 2);
             System.Diagnostics.Debug.WriteLine("Was is successful? {0}", userId);
         }
 

@@ -54,6 +54,7 @@
             this.createAccountButton = new System.Windows.Forms.Button();
             this.titleLinePicture = new System.Windows.Forms.PictureBox();
             this.deleteAccountButton = new System.Windows.Forms.Button();
+            this.passwordButton = new System.Windows.Forms.Button();
             this.accountInfoPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.accountsListView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.titleLinePicture)).BeginInit();
@@ -84,6 +85,7 @@
             // accountInfoPanel
             // 
             this.accountInfoPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.accountInfoPanel.Controls.Add(this.passwordButton);
             this.accountInfoPanel.Controls.Add(this.lastLoginTextBox);
             this.accountInfoPanel.Controls.Add(this.lastLoginLabel);
             this.accountInfoPanel.Controls.Add(this.createdDateTextBox);
@@ -341,6 +343,18 @@
             this.deleteAccountButton.UseVisualStyleBackColor = true;
             this.deleteAccountButton.Click += new System.EventHandler(this.deleteAccountButton_Click);
             // 
+            // passwordButton
+            // 
+            this.passwordButton.Enabled = false;
+            this.passwordButton.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F);
+            this.passwordButton.Location = new System.Drawing.Point(3, 164);
+            this.passwordButton.Name = "passwordButton";
+            this.passwordButton.Size = new System.Drawing.Size(105, 32);
+            this.passwordButton.TabIndex = 14;
+            this.passwordButton.Text = "Password";
+            this.passwordButton.UseVisualStyleBackColor = true;
+            this.passwordButton.Click += new System.EventHandler(this.passwordButton_Click);
+            // 
             // AccountMgmtPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -392,5 +406,6 @@
         private System.Windows.Forms.Label accessLevelLabel;
         private System.Windows.Forms.Button createAccountButton;
         private System.Windows.Forms.Button deleteAccountButton;
+        private System.Windows.Forms.Button passwordButton;
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using WineInventoryApp.Controller;
 using WineInventoryApp.Data;
 
 namespace WineInventoryApp.Controls.Pages
@@ -11,6 +12,7 @@ namespace WineInventoryApp.Controls.Pages
         {
             InitializeComponent();
             InitializeAccountsListView();
+            InitializeWelcomeHeader();
         }
 
         public void InitializeAccountsListView()
@@ -28,6 +30,15 @@ namespace WineInventoryApp.Controls.Pages
             }
 
             accountsListView.SetObjects(users);
+        }
+
+        public void InitializeWelcomeHeader()
+        {
+            if(Accounts.CurrentUserId != -1)
+            {
+                string username = AppDatabase.UserTable.GetUserById(Accounts.CurrentUserId).Username;
+                welcomeLabel.Text = "Hello, " + username;
+            }
         }
 
         private void enableEditCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -50,21 +61,51 @@ namespace WineInventoryApp.Controls.Pages
             if(user != null)
             {
                 PopulateAccountInfoPanel(user);
+                deleteAccountButton.Enabled = true;
             } else
             {
                 ClearAccountInfoPanel();
+                deleteAccountButton.Enabled = false;
             }
             
         }
 
         private void createAccountButton_Click(object sender, EventArgs e)
         {
+            AccountDialog dialog = new AccountDialog();
+            if(dialog.ShowDialog(this) == DialogResult.OK)
+            {
+                int userId = Accounts.CreateUser(dialog.StoredUsername, dialog.StoredPassword);
+                User newUser = AppDatabase.UserTable.GetUserById(userId);
 
+                accountsListView.AddObject(newUser);
+                accountsListView.SelectedObject = newUser;
+            }
         }
 
         private void deleteAccountButton_Click(object sender, EventArgs e)
         {
+            User user = (User)accountsListView.SelectedObject;
 
+            if(user != null)
+            {
+                DialogResult dialogResult = MessageBox.Show("Are you sure?", "Delete user account " + user.Username, MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    AppDatabase.UserTable.DeleteUser(user.UserId);
+                    accountsListView.RemoveObject(user);
+                }
+            }
+        }
+
+        private void passwordButton_Click(object sender, EventArgs e)
+        {
+            PasswordDialog dialog = new PasswordDialog();
+            if(dialog.ShowDialog(this) == DialogResult.OK)
+            {
+                int userId = ((User)accountsListView.SelectedObject).UserId;
+                Accounts.UpdatePassword(userId, dialog.StoredPassword);
+            }
         }
 
         private void saveButton_Click(object sender, EventArgs e)
@@ -76,7 +117,7 @@ namespace WineInventoryApp.Controls.Pages
             string username = usernameTextBox.Text.Trim();
             int access = User.GetAccessLevelFromString(accessLevelComboBox.Text);
 
-            if(!username.Equals(user.Username) && !AppDatabase.UserTable.ContainsUsername(username))
+            if(!username.Equals(user.Username) && !Accounts.ValidateUsername(username))
             {
                 AppDatabase.UserTable.UpdateUsername(userId, username);
                 user.Username = username;
@@ -120,6 +161,7 @@ namespace WineInventoryApp.Controls.Pages
             accessLevelComboBox.Enabled = enable;
 
             saveButton.Enabled = enable;
+            passwordButton.Enabled = enable;
         }
     }
 }
