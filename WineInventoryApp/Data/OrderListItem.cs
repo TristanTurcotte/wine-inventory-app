@@ -9,12 +9,16 @@ namespace WineInventoryApp.Data
         public int Year { get; set; }
         public int Volume { get; set; }
 
+        public int QuantityToOrder { get; set; }
+
         public OrderListItem(Wine listItem, InventoryItem quantity)
         {
             WineName = listItem.WineName;
             Year = listItem.Year;
             Volume = listItem.Volume;
             Quantity = quantity.Quantity;
+
+            QuantityToOrder = 0;
         }
 
         public static List<OrderListItem> ConstructFromLists(List<Wine> wine, List<InventoryItem> inventory)
