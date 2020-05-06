@@ -16,5 +16,22 @@ namespace WineInventoryApp.Controls.Pages
         {
             InitializeComponent();
         }
+
+
+        private void radioButton4_CheckedChanged_1(object sender, EventArgs e)
+        {
+            if(radioButton4.Checked)
+            {
+                this.BackColor = Color.Gray;
+            }
+        }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            if(radioButton3.Checked)
+            {
+                this.BackColor = Color.White;
+            }
+        }
     }
 }

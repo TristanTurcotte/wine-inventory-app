@@ -283,7 +283,7 @@ namespace WineInventoryApp.Data
             public static void DeleteUser(int userId)
             {
                 tableManager.PasswordTableAdapter.DeletePassword(userId);
-
+    
                 tableManager.UserTableAdapter.DeleteUser(userId);
             }
         }
@@ -428,7 +428,7 @@ namespace WineInventoryApp.Data
                     throw new FormatException($"GetWineById({wineId}) returned {data.Count} values.");
                 }
                 var row = (InventoryDataSet.WineRow)data[0];
-                Wine wine = new Wine(row.WineId, row.WineName, row.Origin, row.Price, row.Year, row.Volume, row.Type, row.Image);
+                Wine wine = new Wine(row.WineId, row.WineName, row.Origin, row.Price, row.Year, row.Volume, row.Type, new byte[0]);
 
                 return wine;
             }
@@ -444,7 +444,7 @@ namespace WineInventoryApp.Data
                 var data = tableManager.WineTableAdapter.GetDataByWineName(wineName);
                 foreach (var w in data)
                 {
-                    wine.Add(new Wine(w.WineId, w.WineName, w.Origin, w.Price, w.Year, w.Volume, w.Type, w.Image));
+                    wine.Add(new Wine(w.WineId, w.WineName, w.Origin, w.Price, w.Year, w.Volume, w.Type, new byte[0]));
                 }
 
                 return wine;
@@ -461,7 +461,7 @@ namespace WineInventoryApp.Data
                 var data = tableManager.WineTableAdapter.GetDataByOrigin(origin);
                 foreach (var w in data)
                 {
-                    wine.Add(new Wine(w.WineId, w.WineName, w.Origin, w.Price, w.Year, w.Volume, w.Type, w.Image));
+                    wine.Add(new Wine(w.WineId, w.WineName, w.Origin, w.Price, w.Year, w.Volume, w.Type, new byte[0]));
                 }
 
                 return wine;
@@ -478,7 +478,7 @@ namespace WineInventoryApp.Data
                 var data = tableManager.WineTableAdapter.GetDataByType(type);
                 foreach (var w in data)
                 {
-                    wine.Add(new Wine(w.WineId, w.WineName, w.Origin, w.Price, w.Year, w.Volume, w.Type, w.Image));
+                    wine.Add(new Wine(w.WineId, w.WineName, w.Origin, w.Price, w.Year, w.Volume, w.Type, new byte[0]));
                 }
 
                 return wine;
@@ -495,7 +495,7 @@ namespace WineInventoryApp.Data
                 var data = tableManager.WineTableAdapter.GetDataByYear(year);
                 foreach (var w in data)
                 {
-                    wine.Add(new Wine(w.WineId, w.WineName, w.Origin, w.Price, w.Year, w.Volume, w.Type, w.Image));
+                    wine.Add(new Wine(w.WineId, w.WineName, w.Origin, w.Price, w.Year, w.Volume, w.Type, new byte[0]));
                 }
 
                 return wine;
@@ -549,7 +549,7 @@ namespace WineInventoryApp.Data
             /// <param name="year">Vintage year.</param>
             /// <param name="volume">Volume of a bottle.</param>
             /// <param name="type">Type of wine.</param>
-            public static void InsertWine(string wineName, string origin, decimal price, int year, int volume, string type)
+            public static int InsertWine(string wineName, string origin, decimal price, int year, int volume, string type)
             {
                 string wine = wineName.Trim();
                 if (wine.Length < 1)
@@ -558,13 +558,14 @@ namespace WineInventoryApp.Data
                 }
                 if(GetIdByNameYearVolume(wine, year, volume) != -1)
                 {
-                    return;
+                    return GetIdByNameYearVolume(wine, year, volume);
                 }
 
                 tableManager.WineTableAdapter.Insert(wine, origin, price, year, volume, type.Trim(), null);
                 int id = GetIdByNameYearVolume(wine, year, volume);
 
                 tableManager.InventoryTableAdapter.Insert(id, 0);
+                return id;
             }
 
             /// <summary>

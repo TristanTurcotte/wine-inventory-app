@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using WineInventoryApp.Controls.Dialogs;
 using WineInventoryApp.Data;
 
 
@@ -9,6 +10,7 @@ using WineInventoryApp.Data;
 
 namespace WineInventoryApp.Controls.Pages
 {
+
     public partial class InventoryPage : UserControl
     {
         private static readonly int EDIT_INTERVAL_TIME = 250;
@@ -70,14 +72,24 @@ namespace WineInventoryApp.Controls.Pages
         private void addWineButton_Click(object sender, EventArgs e)
         {
             // TODO: Implement add new wine entry.
-            // Bring up another page where the user can input the required data
+
+            AddWineDialog dialog = new AddWineDialog();
+            if (dialog.ShowDialog(this) == DialogResult.OK)
+            {
+                InventoryItem inventoryItem = new InventoryItem(AddWineDialog.AddedWineId, AppDatabase.InventoryTable.GetQuantity(AddWineDialog.AddedWineId));
+
+                InventoryListItem inventoryListItem = new InventoryListItem(AppDatabase.WineTable.GetWineById(AddWineDialog.AddedWineId), inventoryItem);
+
+                inventoryListView.AddObject(inventoryListItem);
+                
+            }
         }
 
         private void removeWineButton_Click(object sender, EventArgs e)
         {
             // TODO: Implement permanently delete wine entry.
             // Create an 'are you sure?' dialog box.
-            DialogResult dialogResult = MessageBox.Show("Are you sure?", "Delete Entry", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("  Are you sure?", "Delete Entry", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if(dialogResult == DialogResult.Yes)
             {
                 int index = inventoryListView.SelectedIndex;

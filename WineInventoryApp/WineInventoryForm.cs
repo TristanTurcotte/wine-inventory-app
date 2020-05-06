@@ -88,5 +88,10 @@ namespace WineInventoryApp
 
             SetNavigationPanel(false);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            navigator.NavigateForward(new SettingsPage());
+        }
     }
 }
