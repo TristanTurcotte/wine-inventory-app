@@ -48,6 +48,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.AspNetCore.Cryptography.Internal, Version=3.1.3.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Cryptography.Internal.3.1.3\lib\netstandard2.0\Microsoft.AspNetCore.Cryptography.Internal.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation, Version=3.1.3.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNetCore.Cryptography.KeyDerivation.3.1.3\lib\netstandard2.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll</HintPath>
+    </Reference>
+    <Reference Include="ObjectListView, Version=2.9.1.1072, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4, processorArchitecture=MSIL">
+      <HintPath>..\packages\ObjectListView.Official.2.9.1\lib\net20\ObjectListView.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -61,6 +70,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\Dialogs\AccountDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Dialogs\AccountDialog.Designer.cs">
+      <DependentUpon>AccountDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controller\Accounts.cs" />
+    <Compile Include="Controller\Navigator.cs" />
+    <Compile Include="Controls\Dialogs\AddWineDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Dialogs\AddWineDialog.Designer.cs">
+      <DependentUpon>AddWineDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Pages\AccountMgmtPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -102,8 +125,16 @@
       <DependentUpon>InventoryDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Data\InventoryItem.cs" />
+    <Compile Include="Data\InventoryListItem.cs" />
+    <Compile Include="Data\OrderListItem.cs" />
     <Compile Include="Data\User.cs" />
     <Compile Include="Data\Wine.cs" />
+    <Compile Include="Controls\Dialogs\PasswordDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Dialogs\PasswordDialog.Designer.cs">
+      <DependentUpon>PasswordDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="WineInventoryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +143,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Controls\Dialogs\AccountDialog.resx">
+      <DependentUpon>AccountDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Dialogs\AddWineDialog.resx">
+      <DependentUpon>AddWineDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\Pages\AccountMgmtPage.resx">
       <DependentUpon>AccountMgmtPage.cs</DependentUpon>
     </EmbeddedResource>
@@ -126,6 +163,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Pages\InventoryPage.resx">
       <DependentUpon>InventoryPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Dialogs\PasswordDialog.resx">
+      <DependentUpon>PasswordDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -151,6 +191,7 @@
     <None Include="Data\InventoryDataSet.xss">
       <DependentUpon>InventoryDataSet.xsd</DependentUpon>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -218,6 +259,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\SecurityIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

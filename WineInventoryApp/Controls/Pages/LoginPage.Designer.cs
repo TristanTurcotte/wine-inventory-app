@@ -29,9 +29,10 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.invalidEntryLabel = new System.Windows.Forms.Label();
+            this.signInButton = new System.Windows.Forms.Button();
+            this.passwordTextBox = new System.Windows.Forms.TextBox();
+            this.usernameTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -48,9 +49,10 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Window;
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.invalidEntryLabel);
+            this.groupBox1.Controls.Add(this.signInButton);
+            this.groupBox1.Controls.Add(this.passwordTextBox);
+            this.groupBox1.Controls.Add(this.usernameTextBox);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
@@ -61,38 +63,50 @@
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
             // 
-            // button1
+            // invalidEntryLabel
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.Window;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(53, 187);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(111, 31);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Sign In";
-            this.button1.UseVisualStyleBackColor = false;
+            this.invalidEntryLabel.AutoSize = true;
+            this.invalidEntryLabel.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.invalidEntryLabel.ForeColor = System.Drawing.Color.Red;
+            this.invalidEntryLabel.Location = new System.Drawing.Point(22, 61);
+            this.invalidEntryLabel.Name = "invalidEntryLabel";
+            this.invalidEntryLabel.Size = new System.Drawing.Size(166, 14);
+            this.invalidEntryLabel.TabIndex = 6;
+            this.invalidEntryLabel.Text = "Invalid username or password.";
+            this.invalidEntryLabel.Visible = false;
             // 
-            // textBox2
+            // signInButton
             // 
-            this.textBox2.BackColor = System.Drawing.SystemColors.Menu;
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Location = new System.Drawing.Point(22, 152);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(181, 20);
-            this.textBox2.TabIndex = 4;
+            this.signInButton.BackColor = System.Drawing.SystemColors.Window;
+            this.signInButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.signInButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.signInButton.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.signInButton.Location = new System.Drawing.Point(53, 187);
+            this.signInButton.Name = "signInButton";
+            this.signInButton.Size = new System.Drawing.Size(111, 31);
+            this.signInButton.TabIndex = 5;
+            this.signInButton.Text = "Sign In";
+            this.signInButton.UseVisualStyleBackColor = false;
+            this.signInButton.Click += new System.EventHandler(this.signInButton_Click);
             // 
-            // textBox1
+            // passwordTextBox
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.Menu;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Location = new System.Drawing.Point(22, 102);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(181, 20);
-            this.textBox1.TabIndex = 3;
+            this.passwordTextBox.BackColor = System.Drawing.SystemColors.Menu;
+            this.passwordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.passwordTextBox.Location = new System.Drawing.Point(22, 152);
+            this.passwordTextBox.Name = "passwordTextBox";
+            this.passwordTextBox.Size = new System.Drawing.Size(181, 25);
+            this.passwordTextBox.TabIndex = 4;
+            this.passwordTextBox.UseSystemPasswordChar = true;
+            // 
+            // usernameTextBox
+            // 
+            this.usernameTextBox.BackColor = System.Drawing.SystemColors.Menu;
+            this.usernameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.usernameTextBox.Location = new System.Drawing.Point(22, 102);
+            this.usernameTextBox.Name = "usernameTextBox";
+            this.usernameTextBox.Size = new System.Drawing.Size(181, 25);
+            this.usernameTextBox.TabIndex = 3;
             // 
             // label4
             // 
@@ -188,9 +202,9 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button signInButton;
+        private System.Windows.Forms.TextBox passwordTextBox;
+        private System.Windows.Forms.TextBox usernameTextBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
@@ -198,5 +212,6 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label invalidEntryLabel;
     }
 }

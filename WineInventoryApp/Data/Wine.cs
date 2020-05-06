@@ -11,42 +11,42 @@
         /// <summary>
         /// Primary key for this wine 
         /// </summary>
-        int WineId { get; set; }
+        public int WineId { get; set; }
         
         /// <summary>
         /// The name of the wine.
         /// </summary>
-        string WineName { get; set; }
+        public string WineName { get; set; }
 
         /// <summary>
         /// This wine's origin country or region.
         /// </summary>
-        string Origin { get; set; }
+        public string Origin { get; set; }
 
         /// <summary>
         /// Price for one bottle of this wine.
         /// </summary>
-        decimal Price { get; set; }
+        public decimal Price { get; set; }
 
         /// <summary>
         /// The vintage of this wine.
         /// </summary>
-        int Year { get; set; }
+        public int Year { get; set; }
 
         /// <summary>
         /// Volume of a bottle of this wine.
         /// </summary>
-        int Volume { get; set; }
+        public int Volume { get; set; }
 
         /// <summary>
         /// Type of wine: Red, White, Sparkling, etc.
         /// </summary>
-        string Type { get; set; }
+        public string Type { get; set; }
 
         /// <summary>
         /// Array of bytes representing an image.
         /// </summary>
-        byte[] Image { get; set; }
+        public byte[] Image { get; set; }
 
         /// <summary>
         /// Standard constructor. Used by AppDatabase class to provide a typed

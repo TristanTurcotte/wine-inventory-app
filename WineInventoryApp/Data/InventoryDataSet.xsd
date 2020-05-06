@@ -54,7 +54,7 @@ SELECT WineId, Quantity FROM Inventory WHERE (WineId = @WineId)</CommandText>
               <Mapping SourceColumn="Quantity" DataSetColumn="Quantity" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="InventoryDatabaseConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteInventory" Modifier="Public" Name="DeleteInventory" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="DeleteInventory">
+              <DbSource ConnectionRef="InventoryDatabaseConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteInventory" Modifier="Public" Name="DeleteInventory" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="DeleteInventory">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM [dbo].[Inventory] WHERE [WineId] = @wineId</CommandText>
@@ -64,7 +64,7 @@ SELECT WineId, Quantity FROM Inventory WHERE (WineId = @WineId)</CommandText>
                   </DbCommand>
                 </DeleteCommand>
               </DbSource>
-              <DbSource ConnectionRef="InventoryDatabaseConnectionString (Settings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="GetQuantity" Modifier="Public" Name="GetQuantity" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="GetQuantity">
+              <DbSource ConnectionRef="InventoryDatabaseConnectionString (Settings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="GetQuantity" Modifier="Public" Name="GetQuantity" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="GetQuantity">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT SUM(Quantity) FROM Inventory WHERE WineId = @wineId</CommandText>
@@ -74,7 +74,7 @@ SELECT WineId, Quantity FROM Inventory WHERE (WineId = @WineId)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="InventoryDatabaseConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateInventory" Modifier="Public" Name="UpdateInventory" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="UpdateInventory">
+              <DbSource ConnectionRef="InventoryDatabaseConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateInventory" Modifier="Public" Name="UpdateInventory" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="UpdateInventory">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE [dbo].[Inventory] SET [Quantity] = @quantity WHERE [WineId] = @wineId;
@@ -149,7 +149,7 @@ SELECT ChangeId, UserId, WineId, QuantityAdjusted, DateTimeChanged FROM Inventor
               <Mapping SourceColumn="DateTimeChanged" DataSetColumn="DateTimeChanged" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="InventoryDatabaseConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteInventoryChange" Modifier="Public" Name="DeleteInventoryChange" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="DeleteInventoryChange">
+              <DbSource ConnectionRef="InventoryDatabaseConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteInventoryChange" Modifier="Public" Name="DeleteInventoryChange" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="DeleteInventoryChange">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM [dbo].[InventoryChange] WHERE [ChangeId] = @changeId</CommandText>
@@ -179,7 +179,7 @@ SELECT ChangeId, UserId, WineId, QuantityAdjusted, DateTimeChanged FROM Inventor
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="InventoryDatabaseConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertInventoryChange" Modifier="Public" Name="InsertInventoryChange" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="InsertInventoryChange">
+              <DbSource ConnectionRef="InventoryDatabaseConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertInventoryChange" Modifier="Public" Name="InsertInventoryChange" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="InsertInventoryChange">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>INSERT INTO [dbo].[InventoryChange] ([UserId], [WineId], [QuantityAdjusted], [DateTimeChanged]) VALUES (@userId, @wineId, @quantityAdjusted, @dateTimeChanged);
@@ -329,22 +329,24 @@ SELECT WineId, WineName, Origin, Price, Year, Volume, Type, Image FROM Wine WHER
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="InventoryDatabaseConnectionString (Settings)" DbObjectName="dbo.Wine" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetWineByExactName" GetMethodModifier="Public" GetMethodName="GetWineByExactName" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetWineByExactName" UserSourceName="GetWineByExactName">
-                <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT WineId, WineName, Origin, Price, Year, Volume, Type, Image FROM dbo.Wine WHERE LOWER(WineName) = LOWER(@wineName)</CommandText>
-                    <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="wineName" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@wineName" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
-                    </Parameters>
-                  </DbCommand>
-                </SelectCommand>
-              </DbSource>
               <DbSource ConnectionRef="InventoryDatabaseConnectionString (Settings)" DbObjectName="dbo.Wine" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetWineById" GetMethodModifier="Public" GetMethodName="GetWineById" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetWineById" UserSourceName="GetWineById">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT WineId, WineName, Origin, Price, Year, Volume, Type, Image FROM dbo.Wine WHERE WineId = @wineId</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="wineId" ColumnName="WineId" DataSourceName="[C:\USERS\TRIST\SOURCE\REPOS\WINEINVENTORYAPP\WINEINVENTORYAPP\DATA\INVENTORYDATABASE.MDF].dbo.Wine" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@wineId" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="WineId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="InventoryDatabaseConnectionString (Settings)" DbObjectName="dbo.Wine" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="GetWineByNameYearVolume" GetMethodModifier="Public" GetMethodName="GetWineByNameYearVolume" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetWineByNameYearVolume" UserSourceName="GetWineByNameYearVolume">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT WineId, WineName, Origin, Price, Year, Volume, Type, Image FROM dbo.Wine WHERE LOWER(WineName) = LOWER(@wineName) AND Year = @year AND Volume = @volume</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="wineName" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@wineName" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="year" ColumnName="Year" DataSourceName="[C:\USERS\TRIST\SOURCE\REPOS\WINEINVENTORYAPP\WINEINVENTORYAPP\DATA\INVENTORYDATABASE.MDF].dbo.Wine" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@year" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="Year" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="volume" ColumnName="Volume" DataSourceName="[C:\USERS\TRIST\SOURCE\REPOS\WINEINVENTORYAPP\WINEINVENTORYAPP\DATA\INVENTORYDATABASE.MDF].dbo.Wine" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@volume" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="Volume" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </SelectCommand>
@@ -432,7 +434,7 @@ SELECT UserId, UserName, AccessLevel, CreatedDate, LastLoginTime FROM [User] WHE
               <Mapping SourceColumn="LastLoginTime" DataSetColumn="LastLoginTime" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="InventoryDatabaseConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteUser" Modifier="Public" Name="DeleteUser" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="DeleteUser">
+              <DbSource ConnectionRef="InventoryDatabaseConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteUser" Modifier="Public" Name="DeleteUser" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="DeleteUser">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM [dbo].[User] WHERE [UserId] = @userId</CommandText>
@@ -483,7 +485,7 @@ WHERE LOWER(UserName) LIKE '%' + LOWER(@partialUsername) + '%'</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="InventoryDatabaseConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateAccessLevel" Modifier="Public" Name="UpdateAccessLevel" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="UpdateAccessLevel">
+              <DbSource ConnectionRef="InventoryDatabaseConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateAccessLevel" Modifier="Public" Name="UpdateAccessLevel" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="UpdateAccessLevel">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE [dbo].[User] SET [AccessLevel] = @accessLevel WHERE ([UserId] = @userId);</CommandText>
@@ -494,7 +496,7 @@ WHERE LOWER(UserName) LIKE '%' + LOWER(@partialUsername) + '%'</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="InventoryDatabaseConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateLoginTime" Modifier="Public" Name="UpdateLoginTime" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="UpdateLoginTime">
+              <DbSource ConnectionRef="InventoryDatabaseConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateLoginTime" Modifier="Public" Name="UpdateLoginTime" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="UpdateLoginTime">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE [dbo].[User] SET [LastLoginTime] = @lastLoginTime WHERE ([UserId] = @userId);</CommandText>
@@ -505,7 +507,7 @@ WHERE LOWER(UserName) LIKE '%' + LOWER(@partialUsername) + '%'</CommandText>
                   </DbCommand>
                 </UpdateCommand>
               </DbSource>
-              <DbSource ConnectionRef="InventoryDatabaseConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateUsername" Modifier="Public" Name="UpdateUsername" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy4" UserSourceName="UpdateUsername">
+              <DbSource ConnectionRef="InventoryDatabaseConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateUsername" Modifier="Public" Name="UpdateUsername" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="UpdateUsername">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE [dbo].[User] SET [UserName] = @username WHERE ([UserId] = @userId);</CommandText>
@@ -570,7 +572,7 @@ SELECT UserId, Hash, Salt FROM Password WHERE (UserId = @UserId)</CommandText>
               <Mapping SourceColumn="Salt" DataSetColumn="Salt" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="InventoryDatabaseConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeletePassword" Modifier="Public" Name="DeletePassword" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="DeletePassword">
+              <DbSource ConnectionRef="InventoryDatabaseConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeletePassword" Modifier="Public" Name="DeletePassword" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="DeletePassword">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>DELETE FROM [dbo].[Password] WHERE [UserId] = @userId</CommandText>
@@ -590,7 +592,7 @@ SELECT UserId, Hash, Salt FROM Password WHERE (UserId = @UserId)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="InventoryDatabaseConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertPassword" Modifier="Public" Name="InsertPassword" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="InsertPassword">
+              <DbSource ConnectionRef="InventoryDatabaseConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertPassword" Modifier="Public" Name="InsertPassword" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="InsertPassword">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>INSERT INTO [dbo].[Password] ([UserId], [Hash], [Salt]) VALUES (@userId, @hash, @salt);
@@ -603,7 +605,7 @@ SELECT UserId, Hash, Salt FROM Password WHERE (UserId = @userId)</CommandText>
                   </DbCommand>
                 </InsertCommand>
               </DbSource>
-              <DbSource ConnectionRef="InventoryDatabaseConnectionString (Settings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="MatchPasswordHash" Modifier="Public" Name="MatchPasswordHash" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="MatchPasswordHash">
+              <DbSource ConnectionRef="InventoryDatabaseConnectionString (Settings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="MatchPasswordHash" Modifier="Public" Name="MatchPasswordHash" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="MatchPasswordHash">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT COUNT(UserId) FROM dbo.[Password] WHERE UserId = @userId AND Hash = @hash</CommandText>
@@ -614,7 +616,7 @@ SELECT UserId, Hash, Salt FROM Password WHERE (UserId = @userId)</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="InventoryDatabaseConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdatePassword" Modifier="Public" Name="UpdatePassword" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="UpdatePassword">
+              <DbSource ConnectionRef="InventoryDatabaseConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdatePassword" Modifier="Public" Name="UpdatePassword" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="UpdatePassword">
                 <UpdateCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>UPDATE [dbo].[Password] SET [Hash] = @hash, [Salt] = @salt WHERE ([UserId] = @userId);</CommandText>

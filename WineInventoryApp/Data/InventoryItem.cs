@@ -10,12 +10,12 @@
         /// <summary>
         /// The primary foreign key from the Wine table. Auto-increments by 1.
         /// </summary>
-        int WineId { get; }
+        public int WineId { get; }
 
         /// <summary>
         /// Quantity on hand.
         /// </summary>
-        int Quantity { get; set; }
+        public int Quantity { get; set; }
 
         /// <summary>
         /// Standard constructor. Used by AppDatabase class to provide a typed

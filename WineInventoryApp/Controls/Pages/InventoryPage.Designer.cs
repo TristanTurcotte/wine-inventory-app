@@ -1,6 +1,6 @@
 ﻿namespace WineInventoryApp.Controls.Pages
 {
-    partial class Inventory
+    partial class InventoryPage
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,102 +28,231 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.titleLabel = new System.Windows.Forms.Label();
+            this.searchTextBox = new System.Windows.Forms.TextBox();
+            this.inventoryContentPanel = new System.Windows.Forms.Panel();
+            this.inventoryListView = new BrightIdeasSoftware.ObjectListView();
+            this.removeWineButton = new System.Windows.Forms.Button();
+            this.addWineButton = new System.Windows.Forms.Button();
+            this.titleLinePicture = new System.Windows.Forms.PictureBox();
+            this.wineButtonPanel = new System.Windows.Forms.Panel();
+            this.inventoryQuantityColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.inventoryNameColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.inventoryOriginColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.inventoryPriceColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.inventoryYearColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.inventoryVolumeColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.inventoryTypeColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.filterTypeComboBox = new System.Windows.Forms.ComboBox();
+            this.inventoryContentPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.inventoryListView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.titleLinePicture)).BeginInit();
+            this.wineButtonPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // titleLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.Font = new System.Drawing.Font("Microsoft YaHei", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(203, 3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(336, 46);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Current Inventory";
+            this.titleLabel.BackColor = System.Drawing.Color.White;
+            this.titleLabel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.titleLabel.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLabel.Location = new System.Drawing.Point(0, 0);
+            this.titleLabel.Name = "titleLabel";
+            this.titleLabel.Size = new System.Drawing.Size(723, 26);
+            this.titleLabel.TabIndex = 0;
+            this.titleLabel.Text = "Current Inventory";
+            this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBox1
+            // searchTextBox
             // 
-            this.pictureBox1.Image = global::WineInventoryApp.Properties.Resources.Line;
-            this.pictureBox1.Location = new System.Drawing.Point(145, 52);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(447, 18);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.searchTextBox.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.searchTextBox.Location = new System.Drawing.Point(5, 17);
+            this.searchTextBox.Name = "searchTextBox";
+            this.searchTextBox.Size = new System.Drawing.Size(196, 20);
+            this.searchTextBox.TabIndex = 8;
+            this.searchTextBox.Text = "Search";
+            this.searchTextBox.TextChanged += new System.EventHandler(this.searchTextBox_TextChanged);
+            this.searchTextBox.Enter += new System.EventHandler(this.searchTextBox_Enter);
+            this.searchTextBox.Leave += new System.EventHandler(this.searchTextBox_Leave);
             // 
-            // pictureBox2
+            // inventoryContentPanel
             // 
-            this.pictureBox2.Image = global::WineInventoryApp.Properties.Resources.minus;
-            this.pictureBox2.Location = new System.Drawing.Point(558, 76);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(34, 33);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 5;
-            this.pictureBox2.TabStop = false;
+            this.inventoryContentPanel.Controls.Add(this.filterTypeComboBox);
+            this.inventoryContentPanel.Controls.Add(this.wineButtonPanel);
+            this.inventoryContentPanel.Controls.Add(this.inventoryListView);
+            this.inventoryContentPanel.Controls.Add(this.searchTextBox);
+            this.inventoryContentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.inventoryContentPanel.Location = new System.Drawing.Point(0, 44);
+            this.inventoryContentPanel.Name = "inventoryContentPanel";
+            this.inventoryContentPanel.Size = new System.Drawing.Size(723, 360);
+            this.inventoryContentPanel.TabIndex = 9;
             // 
-            // pictureBox3
+            // inventoryListView
             // 
-            this.pictureBox3.Image = global::WineInventoryApp.Properties.Resources.plus;
-            this.pictureBox3.Location = new System.Drawing.Point(518, 76);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(34, 33);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 6;
-            this.pictureBox3.TabStop = false;
+            this.inventoryListView.AllColumns.Add(this.inventoryQuantityColumn);
+            this.inventoryListView.AllColumns.Add(this.inventoryNameColumn);
+            this.inventoryListView.AllColumns.Add(this.inventoryYearColumn);
+            this.inventoryListView.AllColumns.Add(this.inventoryVolumeColumn);
+            this.inventoryListView.AllColumns.Add(this.inventoryOriginColumn);
+            this.inventoryListView.AllColumns.Add(this.inventoryPriceColumn);
+            this.inventoryListView.AllColumns.Add(this.inventoryTypeColumn);
+            this.inventoryListView.CellEditUseWholeCell = false;
+            this.inventoryListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.inventoryQuantityColumn,
+            this.inventoryNameColumn,
+            this.inventoryYearColumn,
+            this.inventoryVolumeColumn,
+            this.inventoryOriginColumn,
+            this.inventoryPriceColumn,
+            this.inventoryTypeColumn});
+            this.inventoryListView.Cursor = System.Windows.Forms.Cursors.Default;
+            this.inventoryListView.FullRowSelect = true;
+            this.inventoryListView.HideSelection = false;
+            this.inventoryListView.Location = new System.Drawing.Point(5, 51);
+            this.inventoryListView.Name = "inventoryListView";
+            this.inventoryListView.ShowGroups = false;
+            this.inventoryListView.Size = new System.Drawing.Size(715, 306);
+            this.inventoryListView.TabIndex = 9;
+            this.inventoryListView.UseCompatibleStateImageBehavior = false;
+            this.inventoryListView.View = System.Windows.Forms.View.Details;
             // 
-            // listView1
+            // removeWineButton
             // 
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(103, 115);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(551, 308);
-            this.listView1.TabIndex = 7;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.removeWineButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.removeWineButton.Image = global::WineInventoryApp.Properties.Resources.minus;
+            this.removeWineButton.Location = new System.Drawing.Point(41, 3);
+            this.removeWineButton.Name = "removeWineButton";
+            this.removeWineButton.Size = new System.Drawing.Size(32, 32);
+            this.removeWineButton.TabIndex = 11;
+            this.removeWineButton.UseVisualStyleBackColor = true;
+            this.removeWineButton.Click += new System.EventHandler(this.removeWineButton_Click);
             // 
-            // textBox1
+            // addWineButton
             // 
-            this.textBox1.Location = new System.Drawing.Point(103, 89);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(196, 20);
-            this.textBox1.TabIndex = 8;
-            this.textBox1.Text = "Search";
+            this.addWineButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addWineButton.Image = global::WineInventoryApp.Properties.Resources.plus;
+            this.addWineButton.Location = new System.Drawing.Point(3, 3);
+            this.addWineButton.Name = "addWineButton";
+            this.addWineButton.Size = new System.Drawing.Size(32, 32);
+            this.addWineButton.TabIndex = 10;
+            this.addWineButton.UseVisualStyleBackColor = true;
+            this.addWineButton.Click += new System.EventHandler(this.addWineButton_Click);
             // 
-            // Inventory
+            // titleLinePicture
+            // 
+            this.titleLinePicture.Dock = System.Windows.Forms.DockStyle.Top;
+            this.titleLinePicture.Image = global::WineInventoryApp.Properties.Resources.Line;
+            this.titleLinePicture.Location = new System.Drawing.Point(0, 26);
+            this.titleLinePicture.Name = "titleLinePicture";
+            this.titleLinePicture.Size = new System.Drawing.Size(723, 18);
+            this.titleLinePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.titleLinePicture.TabIndex = 1;
+            this.titleLinePicture.TabStop = false;
+            // 
+            // wineButtonPanel
+            // 
+            this.wineButtonPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.wineButtonPanel.Controls.Add(this.addWineButton);
+            this.wineButtonPanel.Controls.Add(this.removeWineButton);
+            this.wineButtonPanel.Location = new System.Drawing.Point(641, 6);
+            this.wineButtonPanel.Name = "wineButtonPanel";
+            this.wineButtonPanel.Size = new System.Drawing.Size(79, 41);
+            this.wineButtonPanel.TabIndex = 12;
+            // 
+            // inventoryQuantityColumn
+            // 
+            this.inventoryQuantityColumn.AspectName = "Quantity";
+            this.inventoryQuantityColumn.Text = "Qty";
+            this.inventoryQuantityColumn.Width = 41;
+            // 
+            // inventoryNameColumn
+            // 
+            this.inventoryNameColumn.AspectName = "WineName";
+            this.inventoryNameColumn.Text = "Wine";
+            this.inventoryNameColumn.Width = 299;
+            // 
+            // inventoryOriginColumn
+            // 
+            this.inventoryOriginColumn.AspectName = "Origin";
+            this.inventoryOriginColumn.Text = "Origin";
+            this.inventoryOriginColumn.Width = 115;
+            // 
+            // inventoryPriceColumn
+            // 
+            this.inventoryPriceColumn.AspectName = "Price";
+            this.inventoryPriceColumn.Text = "Price";
+            this.inventoryPriceColumn.Width = 69;
+            // 
+            // inventoryYearColumn
+            // 
+            this.inventoryYearColumn.AspectName = "Year";
+            this.inventoryYearColumn.Text = "Year";
+            this.inventoryYearColumn.Width = 56;
+            // 
+            // inventoryVolumeColumn
+            // 
+            this.inventoryVolumeColumn.AspectName = "Volume";
+            this.inventoryVolumeColumn.Text = "Vol (ml)";
+            this.inventoryVolumeColumn.Width = 57;
+            // 
+            // inventoryTypeColumn
+            // 
+            this.inventoryTypeColumn.AspectName = "Type";
+            this.inventoryTypeColumn.Text = "Type";
+            this.inventoryTypeColumn.Width = 72;
+            // 
+            // filterTypeComboBox
+            // 
+            this.filterTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.filterTypeComboBox.FormattingEnabled = true;
+            this.filterTypeComboBox.Items.AddRange(new object[] {
+            "Quantity",
+            "Name",
+            "Year",
+            "Volume",
+            "Origin",
+            "Price",
+            "Type"});
+            this.filterTypeComboBox.Location = new System.Drawing.Point(207, 17);
+            this.filterTypeComboBox.Name = "filterTypeComboBox";
+            this.filterTypeComboBox.Size = new System.Drawing.Size(121, 21);
+            this.filterTypeComboBox.TabIndex = 14;
+            // 
+            // InventoryPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.listView1);
-            this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.label1);
-            this.Name = "Inventory";
-            this.Size = new System.Drawing.Size(800, 426);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.Controls.Add(this.inventoryContentPanel);
+            this.Controls.Add(this.titleLinePicture);
+            this.Controls.Add(this.titleLabel);
+            this.Name = "InventoryPage";
+            this.Size = new System.Drawing.Size(723, 404);
+            this.inventoryContentPanel.ResumeLayout(false);
+            this.inventoryContentPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.inventoryListView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.titleLinePicture)).EndInit();
+            this.wineButtonPanel.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label titleLabel;
+        private System.Windows.Forms.PictureBox titleLinePicture;
+        private System.Windows.Forms.TextBox searchTextBox;
+        private System.Windows.Forms.Panel inventoryContentPanel;
+        private System.Windows.Forms.Button removeWineButton;
+        private System.Windows.Forms.Button addWineButton;
+        private BrightIdeasSoftware.ObjectListView inventoryListView;
+        private System.Windows.Forms.Panel wineButtonPanel;
+        private BrightIdeasSoftware.OLVColumn inventoryQuantityColumn;
+        private BrightIdeasSoftware.OLVColumn inventoryNameColumn;
+        private BrightIdeasSoftware.OLVColumn inventoryYearColumn;
+        private BrightIdeasSoftware.OLVColumn inventoryVolumeColumn;
+        private BrightIdeasSoftware.OLVColumn inventoryOriginColumn;
+        private BrightIdeasSoftware.OLVColumn inventoryPriceColumn;
+        private BrightIdeasSoftware.OLVColumn inventoryTypeColumn;
+        private System.Windows.Forms.ComboBox filterTypeComboBox;
     }
 }
