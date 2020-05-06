@@ -4,6 +4,7 @@ namespace WineInventoryApp.Data
 {
     class InventoryListItem
     {
+        public int WineId { get; set; }
         public int Quantity { get; set; }
         public string WineName { get; set; }
         public string Origin { get; set; }
@@ -14,6 +15,7 @@ namespace WineInventoryApp.Data
 
         public InventoryListItem(Wine wineData, InventoryItem inventoryData)
         {
+            WineId = wineData.WineId;
             Quantity = inventoryData.Quantity;
             WineName = wineData.WineName;
             Origin = wineData.Origin;
